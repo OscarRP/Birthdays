@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="berry">#FFB3226B</color>
+    <color name="saffron">#FFF5B02E</color>
+    <color name="background_light">#FFFBF8FD</color>
+    <color name="background_dark">#FF170F1F</color>
+    <color name="ic_launcher_background">#FFB3226B</color>
+</resources>

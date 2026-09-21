@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Acciones comunes -->
+    <string name="action_add">Añadir</string>
+    <string name="action_back">Volver</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_clear">Borrar</string>
+    <string name="action_close">Cerrar</string>
+    <string name="action_continue">Continuar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_edit">Editar</string>
+    <string name="action_not_now">Ahora no</string>
+    <string name="action_save">Guardar</string>
+    <string name="action_save_changes">Guardar cambios</string>
+    <string name="action_search">Buscar</string>
+    <string name="action_undo">Deshacer</string>
+
+    <!-- Relaciones -->
+    <string name="relation_family">Familia</string>
+    <string name="relation_friend">Amigos</string>
+    <string name="relation_work">Trabajo</string>
+    <string name="relation_other">Otro</string>
+
+    <!-- Inicio -->
+    <string name="section_today">Hoy</string>
+    <string name="section_this_week">Esta semana</string>
+    <string name="section_next_weeks">Próximas semanas</string>
+    <string name="section_later">Más adelante</string>
+    <plurals name="home_count">
+        <item quantity="one">%1$d cumpleaños guardado</item>
+        <item quantity="many">%1$d cumpleaños guardados</item>
+        <item quantity="other">%1$d cumpleaños guardados</item>
+    </plurals>
+    <plurals name="home_results">
+        <item quantity="one">%1$d resultado</item>
+        <item quantity="many">%1$d resultados</item>
+        <item quantity="other">%1$d resultados</item>
+    </plurals>
+    <plurals name="days_label">
+        <item quantity="one">día</item>
+        <item quantity="many">días</item>
+        <item quantity="other">días</item>
+    </plurals>
+    <string name="home_no_results">Ningún cumpleaños coincide con la búsqueda.</string>
+    <string name="home_search_hint">Buscar en nombres y notas</string>
+    <string name="home_turns">Cumple %1$d años</string>
+    <string name="home_today_no_age">Hoy es su cumpleaños</string>
+    <string name="home_today_badge">¡Hoy!</string>
+    <string name="home_row_date_age">%1$s, cumple %2$d</string>
+    <string name="home_deleted">%1$s eliminado</string>
+    <string name="home_empty_title">Aún no hay cumpleaños</string>
+    <string name="home_empty_body">Añade el primero y te avisamos con tiempo.</string>
+    <string name="home_empty_add">Añadir cumpleaños</string>
+    <string name="home_empty_restore">Recuperar desde Google Drive</string>
+    <string name="home_pro_prompt">¿Te gusta Birthdays? Quita los anuncios con un pago único.</string>
+    <string name="home_pro_prompt_action">Ver Pro</string>
+
+    <!-- Aviso de anuncios y permiso de notificaciones -->
+    <string name="ads_intro_title">Birthdays es gratis gracias a los anuncios</string>
+    <string name="ads_intro_body">Ahora Google te preguntará cómo puede usar tus datos para mostrarlos. Tus cumpleaños y notas nunca salen de tu móvil.</string>
+    <string name="ads_intro_pro">Prefiero Pro, sin anuncios</string>
+    <string name="notif_permission_title">¿Quieres que te avisemos?</string>
+    <string name="notif_permission_body">Para recordarte cada cumpleaños necesitamos permiso para enviarte notificaciones. Solo las usamos para eso.</string>
+    <string name="notif_permission_allow">Activar avisos</string>
+
+    <!-- Añadir / editar -->
+    <string name="edit_title_new">Nuevo cumpleaños</string>
+    <string name="edit_title_edit">Editar cumpleaños</string>
+    <string name="edit_name">Nombre</string>
+    <string name="edit_name_error">Escribe un nombre</string>
+    <string name="edit_date">Fecha</string>
+    <string name="edit_day">Día</string>
+    <string name="edit_month">Mes</string>
+    <string name="edit_year">Año</string>
+    <string name="edit_unknown_year">No sé el año</string>
+    <string name="edit_date_error">Esa fecha no existe. Revisa el día y el mes.</string>
+    <string name="edit_year_error">Escribe un año entre 1900 y el actual, o déjalo vacío.</string>
+    <string name="edit_relation">Relación (opcional)</string>
+    <string name="edit_notes">Notas (opcional)</string>
+    <string name="edit_notes_hint">Ideas de regalo, gustos, alergias…</string>
+    <string name="edit_custom_reminder">Aviso personalizado</string>
+    <string name="edit_custom_reminder_default">Usa los avisos de Ajustes</string>
+    <string name="edit_delete_title">¿Eliminar a %1$s?</string>
+    <string name="edit_delete_body">Dejarás de recibir avisos de este cumpleaños.</string>
+
+    <!-- Ajustes -->
+    <string name="settings_title">Ajustes</string>
+    <string name="settings_pro_hint">Sin anuncios y más, con un solo pago</string>
+    <string name="settings_pro_active">Eres Pro</string>
+    <string name="settings_pro_thanks">Gracias por apoyar la app</string>
+    <string name="settings_reminders">Avisos</string>
+    <string name="settings_notify_me">Avisarme</string>
+    <string name="offset_same_day">El mismo día</string>
+    <string name="offset_one_day">1 día antes</string>
+    <string name="offset_days">%1$d días antes</string>
+    <string name="offset_one_week">1 semana antes</string>
+    <string name="settings_time">Hora del aviso</string>
+    <string name="settings_time_hint">Los avisos llegan a esta hora</string>
+    <string name="settings_notifications">Notificaciones</string>
+    <string name="settings_notifications_on">Activadas en este móvil</string>
+    <string name="settings_notifications_off">Desactivadas. Toca para activarlas.</string>
+    <string name="settings_dates">Fechas</string>
+    <string name="settings_leap_title">Nacidos el 29 de febrero</string>
+    <string name="settings_leap_feb28">Celebrar el 28 de febrero</string>
+    <string name="settings_leap_mar1">Celebrar el 1 de marzo</string>
+    <string name="settings_appearance">Apariencia</string>
+    <string name="settings_theme_light">Claro</string>
+    <string name="settings_theme_dark">Oscuro</string>
+    <string name="settings_theme_system">Sistema</string>
+    <string name="settings_data">Datos</string>
+    <string name="settings_backup_off">Sin conectar a Google Drive</string>
+    <string name="settings_backup_connected">Google Drive conectado</string>
+    <string name="settings_backup_last">Google Drive, última copia %1$s</string>
+    <string name="settings_privacy">Privacidad</string>
+    <string name="settings_ads_consent">Anuncios y consentimiento</string>
+    <string name="settings_ads_consent_hint">Cambia tu decisión sobre los anuncios</string>
+    <string name="settings_privacy_policy">Política de privacidad</string>
+    <string name="settings_privacy_policy_hint">Tus datos se quedan en tu móvil</string>
+    <string name="settings_help">Ayuda</string>
+    <string name="settings_help_reminders">Los avisos no me llegan</string>
+    <string name="settings_help_reminders_hint">Cómo evitar que tu móvil cierre la app</string>
+    <string name="help_battery_body">Algunos móviles cierran las apps en segundo plano para ahorrar batería, y eso puede retrasar o bloquear los avisos. Abre los ajustes de batería y marca Birthdays como \"Sin restricciones\" o \"No optimizar\".</string>
+    <string name="help_battery_open">Abrir ajustes de batería</string>
+    <string name="settings_version">Birthdays %1$s</string>
+
+    <!-- Copia de seguridad -->
+    <string name="backup_title">Copia de seguridad</string>
+    <string name="backup_connect_title">Guarda tus cumpleaños en tu Google Drive</string>
+    <string name="backup_connect_body">Si cambias de móvil o reinstalas la app, los recuperas en un toque.</string>
+    <string name="backup_connect">Conectar Google Drive</string>
+    <string name="backup_connected_title">Guardado en Google Drive</string>
+    <string name="backup_last">Última copia: %1$s</string>
+    <string name="backup_never">Todavía no hay ninguna copia</string>
+    <plurals name="backup_local_count">
+        <item quantity="one">%1$d cumpleaños en este móvil</item>
+        <item quantity="many">%1$d cumpleaños en este móvil</item>
+        <item quantity="other">%1$d cumpleaños en este móvil</item>
+    </plurals>
+    <string name="backup_now">Copiar ahora</string>
+    <string name="backup_auto">Copia automática</string>
+    <string name="backup_auto_hint">Una vez al día, si has hecho cambios</string>
+    <string name="backup_restore">Restaurar desde Drive</string>
+    <string name="backup_restore_hint">Sustituye los datos de este móvil por la copia</string>
+    <string name="backup_privacy_note">Se guarda en una carpeta oculta de tu Drive que solo puede leer esta app. Nadie más ve tus datos, tampoco nosotros.</string>
+    <string name="backup_file_section">Archivo</string>
+    <string name="backup_export">Exportar a un archivo</string>
+    <string name="backup_export_hint">Guarda un JSON donde tú elijas</string>
+    <string name="backup_import">Importar desde un archivo</string>
+    <string name="backup_import_hint">Añade los cumpleaños de un JSON</string>
+    <string name="backup_disconnect">Desconectar Google Drive</string>
+    <string name="backup_disconnect_hint">La copia que ya existe no se borra</string>
+    <plurals name="backup_msg_backed_up">
+        <item quantity="one">%1$d cumpleaños copiado</item>
+        <item quantity="many">%1$d cumpleaños copiados</item>
+        <item quantity="other">%1$d cumpleaños copiados</item>
+    </plurals>
+    <plurals name="backup_msg_restored">
+        <item quantity="one">%1$d cumpleaños restaurado</item>
+        <item quantity="many">%1$d cumpleaños restaurados</item>
+        <item quantity="other">%1$d cumpleaños restaurados</item>
+    </plurals>
+    <plurals name="backup_msg_exported">
+        <item quantity="one">%1$d cumpleaños exportado</item>
+        <item quantity="many">%1$d cumpleaños exportados</item>
+        <item quantity="other">%1$d cumpleaños exportados</item>
+    </plurals>
+    <plurals name="backup_msg_imported">
+        <item quantity="one">%1$d cumpleaños importado</item>
+        <item quantity="many">%1$d cumpleaños importados</item>
+        <item quantity="other">%1$d cumpleaños importados</item>
+    </plurals>
+    <string name="backup_msg_none">Todavía no hay ninguna copia en este Google Drive.</string>
+    <string name="backup_msg_invalid">Ese archivo no es una copia de Birthdays.</string>
+    <string name="backup_msg_error">Algo ha fallado. Revisa la conexión y vuelve a intentarlo.</string>
+    <string name="restore_title">Hay una copia en tu Drive</string>
+    <plurals name="restore_body_count">
+        <item quantity="one">Tiene %1$d cumpleaños. ¿Quieres restaurarla en este móvil?</item>
+        <item quantity="many">Tiene %1$d cumpleaños. ¿Quieres restaurarla en este móvil?</item>
+        <item quantity="other">Tiene %1$d cumpleaños. ¿Quieres restaurarla en este móvil?</item>
+    </plurals>
+    <string name="restore_body_date">Guardada el %1$s.</string>
+    <plurals name="restore_replace_warning">
+        <item quantity="one">Sustituirá el cumpleaños que hay en este móvil.</item>
+        <item quantity="many">Sustituirá los %1$d cumpleaños que hay en este móvil.</item>
+        <item quantity="other">Sustituirá los %1$d cumpleaños que hay en este móvil.</item>
+    </plurals>
+    <string name="restore_confirm">Restaurar</string>
+    <string name="restore_dismiss">Ahora no</string>
+
+    <!-- Pro -->
+    <string name="pro_title">Birthdays Pro</string>
+    <string name="pro_badge">Pro</string>
+    <string name="pro_headline">Paga una vez. Olvídate de los anuncios.</string>
+    <string name="pro_sub">Sin suscripciones ni renovaciones.</string>
+    <string name="pro_headline_thanks">Gracias por apoyar la app</string>
+    <string name="pro_sub_thanks">Tu compra está activa y se recupera sola si cambias de móvil.</string>
+    <string name="pro_perk_no_ads">Sin anuncios en ninguna pantalla</string>
+    <string name="pro_perk_colors">Colores para personalizar la app</string>
+    <string name="pro_perk_widget">Widget con los próximos cumpleaños</string>
+    <string name="pro_perk_custom">Un aviso distinto para cada persona</string>
+    <string name="pro_trust">Los avisos y la copia de seguridad son gratis para todos, siempre. Pro no quita nada de lo que ya usas.</string>
+    <string name="pro_one_time">Pago único, sin suscripción</string>
+    <string name="pro_buy">Obtener Pro</string>
+    <string name="pro_restore">Restaurar compra</string>
+    <string name="pro_restored">Compra restaurada. ¡Eres Pro!</string>
+    <string name="pro_restore_none">No hay ninguna compra en esta cuenta de Google.</string>
+    <string name="pro_unavailable">Google Play no está disponible ahora. Inténtalo más tarde.</string>
+    <string name="pro_active">Eres Pro</string>
+
+    <!-- Notificaciones -->
+    <string name="notification_channel_name">Recordatorios de cumpleaños</string>
+    <string name="notification_channel_description">Avisos el mismo día y antes de cada cumpleaños</string>
+    <string name="notification_today_title">🎂 Hoy cumple años %1$s</string>
+    <string name="notification_today_age">Cumple %1$d años</string>
+    <string name="notification_today_no_age">No te olvides de felicitarle</string>
+    <plurals name="notification_today_many_title">
+        <item quantity="one">🎂 Hoy cumple años %1$d persona</item>
+        <item quantity="many">🎂 Hoy cumplen años %1$d personas</item>
+        <item quantity="other">🎂 Hoy cumplen años %1$d personas</item>
+    </plurals>
+    <plurals name="notification_upcoming_title">
+        <item quantity="one">🎈 Mañana cumple años %1$s</item>
+        <item quantity="many">🎈 %1$s cumple años en %2$d días</item>
+        <item quantity="other">🎈 %1$s cumple años en %2$d días</item>
+    </plurals>
+    <string name="notification_upcoming_age">Cumplirá %1$d el %2$s</string>
+    <string name="notification_upcoming_no_age">El %1$s</string>
+</resources>

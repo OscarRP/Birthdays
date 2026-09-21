@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Birthdays</string>
+
+    <!-- Common actions -->
+    <string name="action_add">Add</string>
+    <string name="action_back">Back</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_clear">Clear</string>
+    <string name="action_close">Close</string>
+    <string name="action_continue">Continue</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_not_now">Not now</string>
+    <string name="action_save">Save</string>
+    <string name="action_save_changes">Save changes</string>
+    <string name="action_search">Search</string>
+    <string name="action_undo">Undo</string>
+
+    <!-- Relations -->
+    <string name="relation_family">Family</string>
+    <string name="relation_friend">Friends</string>
+    <string name="relation_work">Work</string>
+    <string name="relation_other">Other</string>
+
+    <!-- Home -->
+    <string name="section_today">Today</string>
+    <string name="section_this_week">This week</string>
+    <string name="section_next_weeks">Coming weeks</string>
+    <string name="section_later">Later</string>
+    <plurals name="home_count">
+        <item quantity="one">%1$d birthday saved</item>
+        <item quantity="other">%1$d birthdays saved</item>
+    </plurals>
+    <plurals name="home_results">
+        <item quantity="one">%1$d result</item>
+        <item quantity="other">%1$d results</item>
+    </plurals>
+    <plurals name="days_label">
+        <item quantity="one">day</item>
+        <item quantity="other">days</item>
+    </plurals>
+    <string name="home_no_results">No birthdays match your search.</string>
+    <string name="home_search_hint">Search names and notes</string>
+    <string name="home_turns">Turns %1$d</string>
+    <string name="home_today_no_age">It\'s their birthday</string>
+    <string name="home_today_badge">Today!</string>
+    <string name="home_row_date_age">%1$s, turns %2$d</string>
+    <string name="home_deleted">%1$s deleted</string>
+    <string name="home_empty_title">No birthdays yet</string>
+    <string name="home_empty_body">Add the first one and we\'ll remind you in good time.</string>
+    <string name="home_empty_add">Add birthday</string>
+    <string name="home_empty_restore">Restore from Google Drive</string>
+    <string name="home_pro_prompt">Enjoying Birthdays? Remove ads with a one-time payment.</string>
+    <string name="home_pro_prompt_action">See Pro</string>
+
+    <!-- Ads intro and notification permission -->
+    <string name="ads_intro_title">Birthdays is free thanks to ads</string>
+    <string name="ads_intro_body">Next, Google will ask how it can use your data to show them. Your birthdays and notes never leave your phone.</string>
+    <string name="ads_intro_pro">I\'d rather go Pro, no ads</string>
+    <string name="notif_permission_title">Want us to remind you?</string>
+    <string name="notif_permission_body">To remind you of each birthday we need permission to send you notifications. We only use them for that.</string>
+    <string name="notif_permission_allow">Turn on reminders</string>
+
+    <!-- Add / edit -->
+    <string name="edit_title_new">New birthday</string>
+    <string name="edit_title_edit">Edit birthday</string>
+    <string name="edit_name">Name</string>
+    <string name="edit_name_error">Enter a name</string>
+    <string name="edit_date">Date</string>
+    <string name="edit_day">Day</string>
+    <string name="edit_month">Month</string>
+    <string name="edit_year">Year</string>
+    <string name="edit_unknown_year">I don\'t know the year</string>
+    <string name="edit_date_error">That date doesn\'t exist. Check the day and month.</string>
+    <string name="edit_year_error">Enter a year between 1900 and this year, or leave it empty.</string>
+    <string name="edit_relation">Relationship (optional)</string>
+    <string name="edit_notes">Notes (optional)</string>
+    <string name="edit_notes_hint">Gift ideas, likes, allergies…</string>
+    <string name="edit_custom_reminder">Custom reminder</string>
+    <string name="edit_custom_reminder_default">Uses the reminders from Settings</string>
+    <string name="edit_delete_title">Delete %1$s?</string>
+    <string name="edit_delete_body">You won\'t get reminders for this birthday any more.</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_pro_hint">No ads and more, with a single payment</string>
+    <string name="settings_pro_active">You\'re Pro</string>
+    <string name="settings_pro_thanks">Thanks for supporting the app</string>
+    <string name="settings_reminders">Reminders</string>
+    <string name="settings_notify_me">Remind me</string>
+    <string name="offset_same_day">On the day</string>
+    <string name="offset_one_day">1 day before</string>
+    <string name="offset_days">%1$d days before</string>
+    <string name="offset_one_week">1 week before</string>
+    <string name="settings_time">Reminder time</string>
+    <string name="settings_time_hint">Reminders arrive at this time</string>
+    <string name="settings_notifications">Notifications</string>
+    <string name="settings_notifications_on">On for this phone</string>
+    <string name="settings_notifications_off">Off. Tap to turn them on.</string>
+    <string name="settings_dates">Dates</string>
+    <string name="settings_leap_title">Born on 29 February</string>
+    <string name="settings_leap_feb28">Celebrate on 28 February</string>
+    <string name="settings_leap_mar1">Celebrate on 1 March</string>
+    <string name="settings_appearance">Appearance</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_system">System</string>
+    <string name="settings_data">Data</string>
+    <string name="settings_backup_off">Not connected to Google Drive</string>
+    <string name="settings_backup_connected">Google Drive connected</string>
+    <string name="settings_backup_last">Google Drive, last backup %1$s</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_ads_consent">Ads and consent</string>
+    <string name="settings_ads_consent_hint">Change your choice about ads</string>
+    <string name="settings_privacy_policy">Privacy policy</string>
+    <string name="settings_privacy_policy_hint">Your data stays on your phone</string>
+    <string name="settings_help">Help</string>
+    <string name="settings_help_reminders">Reminders don\'t arrive</string>
+    <string name="settings_help_reminders_hint">How to stop your phone closing the app</string>
+    <string name="help_battery_body">Some phones close apps in the background to save battery, which can delay or block reminders. Open the battery settings and set Birthdays to \"Unrestricted\" or \"Don\'t optimise\".</string>
+    <string name="help_battery_open">Open battery settings</string>
+    <string name="settings_version">Birthdays %1$s</string>
+
+    <!-- Backup -->
+    <string name="backup_title">Backup</string>
+    <string name="backup_connect_title">Save your birthdays to your Google Drive</string>
+    <string name="backup_connect_body">If you change phones or reinstall the app, you get them back in one tap.</string>
+    <string name="backup_connect">Connect Google Drive</string>
+    <string name="backup_connected_title">Saved to Google Drive</string>
+    <string name="backup_last">Last backup: %1$s</string>
+    <string name="backup_never">No backup yet</string>
+    <plurals name="backup_local_count">
+        <item quantity="one">%1$d birthday on this phone</item>
+        <item quantity="other">%1$d birthdays on this phone</item>
+    </plurals>
+    <string name="backup_now">Back up now</string>
+    <string name="backup_auto">Automatic backup</string>
+    <string name="backup_auto_hint">Once a day, if something changed</string>
+    <string name="backup_restore">Restore from Drive</string>
+    <string name="backup_restore_hint">Replaces the data on this phone with the backup</string>
+    <string name="backup_privacy_note">It\'s saved in a hidden folder in your Drive that only this app can read. Nobody else sees your data, not even us.</string>
+    <string name="backup_file_section">File</string>
+    <string name="backup_export">Export to a file</string>
+    <string name="backup_export_hint">Save a JSON file wherever you like</string>
+    <string name="backup_import">Import from a file</string>
+    <string name="backup_import_hint">Adds the birthdays from a JSON file</string>
+    <string name="backup_disconnect">Disconnect Google Drive</string>
+    <string name="backup_disconnect_hint">The existing backup is not deleted</string>
+    <plurals name="backup_msg_backed_up">
+        <item quantity="one">%1$d birthday backed up</item>
+        <item quantity="other">%1$d birthdays backed up</item>
+    </plurals>
+    <plurals name="backup_msg_restored">
+        <item quantity="one">%1$d birthday restored</item>
+        <item quantity="other">%1$d birthdays restored</item>
+    </plurals>
+    <plurals name="backup_msg_exported">
+        <item quantity="one">%1$d birthday exported</item>
+        <item quantity="other">%1$d birthdays exported</item>
+    </plurals>
+    <plurals name="backup_msg_imported">
+        <item quantity="one">%1$d birthday imported</item>
+        <item quantity="other">%1$d birthdays imported</item>
+    </plurals>
+    <string name="backup_msg_none">There\'s no backup in this Google Drive yet.</string>
+    <string name="backup_msg_invalid">That file isn\'t a Birthdays backup.</string>
+    <string name="backup_msg_error">Something went wrong. Check your connection and try again.</string>
+    <string name="restore_title">There\'s a backup in your Drive</string>
+    <plurals name="restore_body_count">
+        <item quantity="one">It has %1$d birthday. Do you want to restore it on this phone?</item>
+        <item quantity="other">It has %1$d birthdays. Do you want to restore it on this phone?</item>
+    </plurals>
+    <string name="restore_body_date">Saved %1$s.</string>
+    <plurals name="restore_replace_warning">
+        <item quantity="one">It will replace the %1$d birthday on this phone.</item>
+        <item quantity="other">It will replace the %1$d birthdays on this phone.</item>
+    </plurals>
+    <string name="restore_confirm">Restore</string>
+    <string name="restore_dismiss">Not now</string>
+
+    <!-- Pro -->
+    <string name="pro_title">Birthdays Pro</string>
+    <string name="pro_badge">Pro</string>
+    <string name="pro_headline">Pay once. Forget about ads.</string>
+    <string name="pro_sub">No subscriptions or renewals.</string>
+    <string name="pro_headline_thanks">Thanks for supporting the app</string>
+    <string name="pro_sub_thanks">Your purchase is active and comes back on its own if you change phones.</string>
+    <string name="pro_perk_no_ads">No ads on any screen</string>
+    <string name="pro_perk_colors">Colours to personalise the app</string>
+    <string name="pro_perk_widget">Widget with upcoming birthdays</string>
+    <string name="pro_perk_custom">A different reminder for each person</string>
+    <string name="pro_trust">Reminders and backups are free for everyone, always. Pro doesn\'t take away anything you already use.</string>
+    <string name="pro_one_time">One-time payment, no subscription</string>
+    <string name="pro_buy">Get Pro</string>
+    <string name="pro_restore">Restore purchase</string>
+    <string name="pro_restored">Purchase restored. You\'re Pro!</string>
+    <string name="pro_restore_none">No purchase found for this Google account.</string>
+    <string name="pro_unavailable">Google Play isn\'t available right now. Try again later.</string>
+    <string name="pro_active">You\'re Pro</string>
+
+    <!-- Notifications -->
+    <string name="notification_channel_name">Birthday reminders</string>
+    <string name="notification_channel_description">Reminders on the day and before each birthday</string>
+    <string name="notification_today_title">🎂 Today is %1$s\'s birthday</string>
+    <string name="notification_today_age">Turns %1$d</string>
+    <string name="notification_today_no_age">Don\'t forget to wish them a happy birthday</string>
+    <plurals name="notification_today_many_title">
+        <item quantity="one">🎂 %1$d person has a birthday today</item>
+        <item quantity="other">🎂 %1$d people have a birthday today</item>
+    </plurals>
+    <plurals name="notification_upcoming_title">
+        <item quantity="one">🎈 %1$s\'s birthday is tomorrow</item>
+        <item quantity="other">🎈 %1$s\'s birthday is in %2$d days</item>
+    </plurals>
+    <string name="notification_upcoming_age">Turns %1$d on %2$s</string>
+    <string name="notification_upcoming_no_age">On %1$s</string>
+</resources>
