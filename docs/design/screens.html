@@ -1,0 +1,671 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<title>Pantallas de Cumpleaños</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F1EDF5;--panel:#FFFFFF;--text:#25162D;--muted:#665670;--line:#DDD2E6;--brand:#B3226B;--brand-ink:#FFFFFF;--chip:#E9E1F0;--k:1;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#130C19;--panel:#1E1428;--text:#F2E9F6;--muted:#B9A8C5;--line:#33244A;--brand:#FF8DC1;--brand-ink:#4A0A2C;--chip:#2B1D3A}
+}
+:root[data-theme="dark"]{--bg:#130C19;--panel:#1E1428;--text:#F2E9F6;--muted:#B9A8C5;--line:#33244A;--brand:#FF8DC1;--brand-ink:#4A0A2C;--chip:#2B1D3A}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font-family:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.55;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:inherit}
+:focus-visible{outline:3px solid var(--brand);outline-offset:2px}
+h1,h2,h3{font-family:'Bricolage Grotesque','Avenir Next','Segoe UI',system-ui,sans-serif;margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding:0 16px}
+
+.hero{padding:44px 0 20px}
+.hero h1{font-size:clamp(32px,5.4vw,56px);line-height:1.05;font-weight:700;max-width:16ch}
+.hero p{max-width:62ch;color:var(--muted);font-size:17px;margin:16px 0 0}
+
+.controls{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding:10px 0}
+.controls .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center}
+.sw{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-weight:600;font-size:15px}
+.sw i{position:relative;width:46px;height:28px;border-radius:14px;background:var(--chip);border:2px solid var(--muted);transition:background .15s}
+.sw i::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--muted);transition:transform .15s,background .15s}
+.sw[aria-checked="true"] i{background:var(--brand);border-color:var(--brand)}
+.sw[aria-checked="true"] i::after{transform:translateX(18px);background:var(--brand-ink)}
+.legend{font-size:13.5px;color:var(--muted);margin-left:auto}
+
+section.blk{padding:44px 0 8px}
+section.blk>h2{font-size:clamp(24px,3.4vw,34px);font-weight:700}
+section.blk>p{max-width:70ch;color:var(--muted);margin:8px 0 26px}
+.phones{display:flex;flex-wrap:wrap;gap:34px 26px;align-items:flex-start}
+.fig{margin:0;width:calc(344px*var(--k))}
+.fig figcaption{padding:16px 6px 0}
+.fig h3{font-size:18px;font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px}
+.fig p{margin:6px 0 0;font-size:14px;color:var(--muted);line-height:1.5}
+.ph{font-family:'Figtree',sans-serif;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--chip);color:var(--muted)}
+.ph.pro{background:#F5B02E;color:#2A1A00}
+
+.flowbox{background:#fff;color:#25162D;border-radius:20px;padding:18px;overflow-x:auto;border:1px solid var(--line)}
+.flowbox pre{margin:0;min-width:640px}
+
+/* ========== Tokens de la app (claro / oscuro) ========== */
+.tk,.screen{
+  --bg:#FBF8FD;--sf:#FFFFFF;--sf2:#F2ECF7;--ink:#2B1735;--ink2:#6E5C79;--line:#E6DDED;
+  --pri:#B3226B;--onpri:#FFFFFF;--pric:#FADCEA;--onpric:#5C0F35;--acc:#F5B02E;--accc:#FFE9B8;--onacc:#2A1A00;
+  --danger:#B3261E;--scrim:rgba(30,12,40,.5);--inv:#33253D;--invf:#F4EAF8;--inva:#FF9FCB;
+  --a0b:#FADCEA;--a0f:#8A1750;--a1b:#D3EFEC;--a1f:#0B5E58;--a2b:#FFE9B8;--a2f:#6B4700;--a3b:#DCE2FA;--a3f:#2C3F96;--a4b:#DDF1D4;--a4f:#2F6B1C;--a5b:#FFDDD0;--a5f:#9A3412;
+}
+[data-app-theme="dark"] .tk,[data-app-theme="dark"] .screen{
+  --bg:#170F1F;--sf:#22172D;--sf2:#2E2040;--ink:#F4EAF8;--ink2:#BCABC9;--line:#3A2A4B;
+  --pri:#FF8DC1;--onpri:#4A0A2C;--pric:#5E1640;--onpric:#FFD9EA;--acc:#F5B02E;--accc:#4B3610;--onacc:#2A1A00;
+  --danger:#F2665C;--scrim:rgba(0,0,0,.6);--inv:#EADFF0;--invf:#2B1735;--inva:#B3226B;
+  --a0b:#5E1640;--a0f:#FFD0E5;--a1b:#0F4B47;--a1f:#BDF0EB;--a2b:#4B3610;--a2f:#FFDF9E;--a3b:#26305F;--a3f:#D0D8FF;--a4b:#23421A;--a4f:#CDEEBF;--a5b:#5A2612;--a5f:#FFD3BF;
+}
+
+/* ========== Marco del móvil ========== */
+.slot{position:relative;width:calc(344px*var(--k));height:calc(688px*var(--k))}
+.phone{position:absolute;left:0;top:0;width:344px;height:688px;padding:12px;border-radius:52px;background:#15101B;box-shadow:inset 0 0 0 2px #382C43,0 30px 50px -28px rgba(30,10,40,.55);transform-origin:0 0;transform:scale(var(--k))}
+.screen{position:relative;width:320px;height:664px;border-radius:40px;overflow:hidden;background:var(--bg);color:var(--ink);font-family:'Figtree',system-ui,sans-serif;font-size:15px;line-height:1.35;display:flex;flex-direction:column;--adh:0px}
+.screen.has-ad{--adh:56px}
+.sb{height:32px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:6px 26px 0;font-size:12.5px;font-weight:600;position:relative}
+.hole{position:absolute;left:50%;top:10px;width:11px;height:11px;margin-left:-5px;border-radius:50%;background:#0D0912}
+.sbi{display:flex;gap:4px;align-items:center}
+.gest{flex:none;height:22px;display:grid;place-items:end center;padding-bottom:8px}
+.gest::after{content:"";width:104px;height:4px;border-radius:2px;background:var(--ink);opacity:.45}
+.screen svg.ic{flex:none;display:block}
+
+.bar{display:flex;align-items:center;min-height:56px;padding:0 4px 0 16px;flex:none}
+.bar.back{padding-left:4px}
+.bar h1{margin:0;flex:1;font-size:28px;line-height:1.1;font-weight:700}
+.bar.back h1{font-size:21px;font-weight:600}
+.ib{width:48px;height:48px;display:grid;place-items:center;border-radius:50%;flex:none}
+.subline{padding:0 16px 8px;font-size:13.5px;color:var(--ink2);flex:none}
+.body{flex:1;min-height:0;overflow-y:auto;padding:0 16px 16px;scrollbar-width:none}
+.body::-webkit-scrollbar{display:none}
+.body.fabpad{padding-bottom:96px}
+
+/* Lista */
+.sec{margin-bottom:14px}
+.sech{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;color:var(--ink2);padding:6px 4px}
+.sech em{font-style:normal;font-weight:600}
+.grp{background:var(--sf);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.row{display:flex;align-items:center;gap:12px;padding:10px 14px;min-height:64px;background:var(--sf)}
+.grp>.row+.row,.grp>.swipe+.row,.grp>.row+.swipe,.grp>.swipe+.swipe{border-top:1px solid var(--line)}
+.row .t{flex:1;min-width:0}
+.row .t b{display:flex;align-items:center;gap:6px;font-size:16px;font-weight:600;line-height:1.25}
+.row .t b .nm{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .t span.s{display:block;font-size:13px;color:var(--ink2);margin-top:1px}
+.tag{flex:none;font-size:10.5px;font-weight:600;padding:1px 7px;border-radius:7px;background:var(--sf2);color:var(--ink2)}
+.av{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:18px}
+.a0{background:var(--a0b);color:var(--a0f)}.a1{background:var(--a1b);color:var(--a1f)}.a2{background:var(--a2b);color:var(--a2f)}
+.a3{background:var(--a3b);color:var(--a3f)}.a4{background:var(--a4b);color:var(--a4f)}.a5{background:var(--a5b);color:var(--a5f)}
+.cd{flex:none;min-width:44px;text-align:right}
+.cd b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:26px;line-height:1;font-weight:700;color:var(--pri)}
+.cd small{font-size:11.5px;color:var(--ink2)}
+mark{background:var(--accc);color:inherit;border-radius:3px;padding:0 1px}
+
+.hoy{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;padding:16px;border-radius:26px;background:var(--acc);color:var(--onacc)}
+.hoy .av{width:52px;height:52px;background:#2A1A00;color:#F5B02E;font-size:23px}
+.hoy .t{flex:1;min-width:0;position:relative}
+.hoy .t b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:21px;line-height:1.15;font-weight:700}
+.hoy .t span{display:block;font-size:14px;margin-top:2px}
+.hoy .tag{display:inline-block;margin-top:6px;background:rgba(42,26,0,.14);color:#2A1A00}
+.hoy .hr{position:relative;text-align:center;flex:none}
+.hoy .hr strong{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:22px;line-height:1;margin-top:2px}
+.cf{position:absolute;border-radius:2px;opacity:.55}
+
+.swipe{position:relative;overflow:hidden;background:var(--danger)}
+.swipe .under{position:absolute;right:0;top:0;bottom:0;width:110px;display:flex;align-items:center;justify-content:center;gap:6px;color:#fff;font-weight:700;font-size:14px}
+.swipe .row{position:relative;transform:translateX(-96px)}
+
+.fab{position:absolute;right:16px;bottom:calc(22px + var(--adh) + 16px);height:56px;padding:0 20px 0 16px;border-radius:18px;background:var(--pri);color:var(--onpri);display:flex;align-items:center;gap:10px;font-weight:700;font-size:15.5px;box-shadow:0 6px 16px -6px rgba(60,10,40,.5)}
+.fab.up{bottom:calc(22px + var(--adh) + 16px + 62px)}
+.ad{flex:none;height:56px;background:var(--sf2);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:10px;color:var(--ink2);font-size:12.5px}
+.ad .b{font-size:10px;font-weight:800;border:1.5px solid var(--ink2);border-radius:4px;padding:0 4px;line-height:1.4}
+.snack{position:absolute;left:12px;right:12px;bottom:calc(22px + var(--adh) + 8px);background:var(--inv);color:var(--invf);border-radius:14px;padding:0 6px 0 16px;min-height:52px;display:flex;align-items:center;justify-content:space-between;font-size:14.5px;box-shadow:0 8px 20px -8px rgba(0,0,0,.5)}
+.snack button{color:var(--inva);font-weight:700;padding:14px 12px}
+
+.empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 32px 40px}
+.empty h2{font-size:24px;font-weight:700;margin-top:18px}
+.empty p{color:var(--ink2);margin:6px 0 24px;max-width:24ch}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:50px;border-radius:25px;background:var(--pri);color:var(--onpri);font-weight:700;font-size:15.5px;text-align:center}
+.btn.auto{width:auto;padding:0 24px}
+.btn.text{background:none;color:var(--pri)}
+.btn.tonal{background:var(--pric);color:var(--onpric)}
+
+/* Formularios */
+.form{padding-top:8px}
+.fld{position:relative;height:56px;border:1.5px solid var(--ink2);border-radius:12px;padding:0 14px;display:flex;align-items:center;margin-top:20px}
+.fld label{position:absolute;top:-9px;left:10px;padding:0 4px;background:var(--bg);font-size:12px;color:var(--ink2)}
+.fld .v{flex:1;display:flex;align-items:center;justify-content:space-between;font-size:16px;color:var(--ink);min-width:0}
+.fld .ph2{color:var(--ink2);font-style:normal}
+.fld.focus{border:2px solid var(--pri)}
+.fld.focus label{color:var(--pri)}
+.caret{display:inline-block;width:2px;height:22px;background:var(--pri);margin-left:1px;animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.caret{animation:none}}
+.fld.big{height:92px;align-items:flex-start;padding-top:16px}
+.fld.big .v{align-items:flex-start;line-height:1.35}
+.fld.dis{opacity:.4}
+.drow{display:flex;gap:10px}
+.drow .d{flex:1}.drow .m{flex:1.9}.drow .y{flex:1.4}
+.flabel{margin:20px 0 8px;font-size:13px;font-weight:600;color:var(--ink2)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:36px;padding:0 13px;border-radius:10px;border:1px solid var(--ink2);display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--ink);background:transparent}
+.chip svg{display:none}
+.chip.on{background:var(--pric);color:var(--onpric);border-color:transparent}
+.chip.on svg{display:block}
+.cb{display:flex;align-items:center;gap:12px;min-height:48px;width:100%;font-size:15px}
+.cb .box{width:22px;height:22px;border:2px solid var(--ink2);border-radius:5px;display:grid;place-items:center;color:transparent}
+.cb.on .box{background:var(--pri);border-color:var(--pri);color:var(--onpri)}
+.foot{flex:none;padding:10px 16px 6px;background:var(--bg)}
+.srow{display:flex;align-items:center;gap:14px;padding:10px 2px;min-height:58px;width:100%}
+.srow .t{flex:1;min-width:0}
+.srow .t b{display:block;font-size:15.5px;font-weight:600}
+.srow .t span{display:block;font-size:13px;color:var(--ink2);line-height:1.35}
+.srow .val{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;color:var(--pri)}
+.srow>svg.lead{color:var(--ink2)}
+.sh{font-size:13px;font-weight:700;color:var(--pri);margin:20px 2px 2px}
+.pro{display:inline-flex;align-items:center;gap:3px;font-size:10.5px;font-weight:800;background:var(--acc);color:#2A1A00;border-radius:7px;padding:2px 7px}
+.procard{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--pric);color:var(--onpric);border-radius:22px;width:100%;margin-top:6px}
+.procard .star{flex:none;width:42px;height:42px;border-radius:50%;background:var(--acc);color:#2A1A00;display:grid;place-items:center}
+.procard .t{flex:1}
+.procard .t b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px}
+.procard .t span{font-size:13px;line-height:1.3;display:block}
+.radrow{display:flex;align-items:center;gap:14px;min-height:48px;width:100%}
+.rad{width:22px;height:22px;border:2px solid var(--ink2);border-radius:50%;display:grid;place-items:center}
+.radrow.on .rad{border-color:var(--pri)}
+.radrow.on .rad::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--pri)}
+.seg{display:flex;border:1px solid var(--ink2);border-radius:20px;overflow:hidden;margin:4px 0 6px}
+.seg button{flex:1;height:40px;font-weight:600;font-size:13.5px;text-align:center;display:flex;align-items:center;justify-content:center;gap:5px}
+.seg button+button{border-left:1px solid var(--ink2)}
+.seg button.on{background:var(--pric);color:var(--onpric)}
+.seg button svg{display:none}.seg button.on svg{display:block}
+.note{font-size:12.5px;color:var(--ink2);padding:6px 2px 0}
+
+/* Pro */
+.proh{padding:6px 2px 0}
+.proh .star{width:56px;height:56px;border-radius:50%;background:var(--acc);color:#2A1A00;display:grid;place-items:center;margin-bottom:14px}
+.proh h2{font-size:29px;line-height:1.08;font-weight:700;max-width:14ch}
+.proh p{color:var(--ink2);margin:10px 0 0;font-size:14.5px}
+.perks{list-style:none;margin:18px 0 0;padding:0}
+.perks li{display:flex;gap:12px;align-items:flex-start;padding:9px 0;font-size:15.5px;font-weight:500}
+.perks li svg{color:var(--pri);margin-top:1px}
+.trust{margin-top:12px;border-radius:16px;background:var(--sf2);padding:12px 14px;display:flex;gap:12px;font-size:13.5px;line-height:1.4}
+.trust svg{color:var(--pri);margin-top:1px}
+.price{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.price b{font-family:'Bricolage Grotesque',sans-serif;font-size:34px;line-height:1;font-weight:700}
+.price span{font-size:12.5px;color:var(--ink2);line-height:1.3;flex:1}
+.price .btn{width:auto;padding:0 22px;flex:none}
+.thanks{display:flex;align-items:center;gap:10px;justify-content:center;height:50px;border-radius:25px;background:var(--pric);color:var(--onpric);font-weight:700}
+
+/* Overlays */
+.scrim{position:absolute;inset:0;background:var(--scrim)}
+.sheet{position:absolute;left:0;right:0;bottom:0;background:var(--sf);border-radius:30px 30px 0 0;padding:12px 22px 30px}
+.sheet .grab{width:36px;height:4px;border-radius:2px;background:var(--ink2);opacity:.5;margin:0 auto 20px}
+.sheet h3{font-size:22px;line-height:1.15;font-weight:700}
+.sheet p{color:var(--ink2);font-size:14.5px;margin:10px 0 20px}
+.sheet .btn+.btn{margin-top:4px}
+.dialog{position:absolute;left:22px;right:22px;top:50%;transform:translateY(-50%);background:var(--sf);border-radius:28px;padding:24px 22px 16px}
+.dialog .bell{width:44px;height:44px;border-radius:50%;background:var(--pric);color:var(--onpric);display:grid;place-items:center;margin-bottom:14px}
+.dialog h3{font-size:22px;line-height:1.15;font-weight:700}
+.dialog p{color:var(--ink2);font-size:14.5px;margin:10px 0 16px}
+.dialog .acts{display:flex;justify-content:flex-end;gap:4px}
+.dialog .acts button{height:44px;padding:0 16px;border-radius:22px;font-weight:700;color:var(--pri)}
+
+/* Búsqueda */
+.sbox{display:flex;align-items:center;gap:8px;height:50px;border-radius:25px;background:var(--sf2);padding:0 4px 0 16px;flex:1;margin-right:12px;font-size:16px}
+.sbox span{flex:1}
+
+/* Notificaciones */
+.screen.fixeddark{background:#1B1622}
+.fixeddark .sb{color:#F3ECF7}.fixeddark .gest::after{background:#F3ECF7}
+.shade{flex:1;padding:14px 14px 0;color:#F3ECF7}
+.shade .clock{padding:6px 8px 18px}
+.shade .clock b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:62px;line-height:1}
+.shade .clock span{font-size:14.5px;color:#C9BCD3}
+.nt{background:#2C2534;border-radius:24px;padding:14px 16px 12px;margin-bottom:8px}
+.nt .h{display:flex;align-items:center;gap:8px;font-size:12px;color:#C9BCD3}
+.nt .h .ai{width:20px;height:20px;border-radius:50%;background:#FF8DC1;color:#4A0A2C;display:grid;place-items:center}
+.nt b{display:block;font-size:15.5px;margin-top:8px;font-weight:600}
+.nt p{margin:2px 0 0;font-size:14px;color:#D9CEE2}
+.nt .acts{display:flex;gap:6px;margin-top:10px;margin-left:-8px}
+.nt .acts span{color:#FF8DC1;font-weight:700;font-size:14px;padding:8px}
+.nt .acts span.pv{border:1px dashed #FF8DC1;border-radius:14px}
+
+/* Widget */
+.screen.wall{background:#2A1638}
+.wall .sb{color:#fff}.wall .gest::after{background:#fff}
+.wall .c1{position:absolute;width:300px;height:300px;border-radius:50%;background:#B3226B;opacity:.4;right:-120px;top:-60px}
+.wall .c2{position:absolute;width:220px;height:220px;border-radius:50%;background:#F5B02E;opacity:.22;left:-90px;bottom:80px}
+.wall .wc{position:relative;padding:34px 24px 18px;color:#fff}
+.wall .wc b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:64px;font-weight:500;line-height:1}
+.wall .wc span{font-size:14.5px;opacity:.85}
+.wdg{position:relative;margin:6px 16px 0;background:var(--sf);color:var(--ink);border-radius:30px;padding:16px 16px 8px}
+.wdg .wh{display:flex;align-items:center;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:700;margin-bottom:4px}
+.wdg .row{background:none;padding:7px 2px;min-height:52px}
+.wdg .av{width:34px;height:34px;font-size:15px}
+.wdg .cd b{font-size:20px}
+.dock{position:absolute;left:24px;right:24px;bottom:34px;display:flex;justify-content:space-between}
+.dock i{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.16)}
+
+/* ========== Guía de estilo ========== */
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:22px}
+.card h3{font-size:20px;margin-bottom:14px}
+.sw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.swt{border-radius:14px;overflow:hidden;border:1px solid var(--line);font-size:12.5px}
+.swt .pair{display:flex}
+.swt .pair div{flex:1;height:46px;display:flex;align-items:flex-end;padding:4px 8px;font-weight:600;font-size:11.5px}
+.swt .nm{padding:8px 10px;color:var(--text)}
+.swt .nm b{display:block;font-size:13.5px}.swt .nm span{color:var(--muted)}
+.tsamp{display:grid;gap:10px}
+.tsamp div{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:8px}
+.tsamp small{color:var(--muted);font-size:12.5px;text-align:right}
+.tk.demo{border-radius:16px;padding:18px;background:var(--bg);color:var(--ink);font-family:'Figtree',sans-serif;display:flex;flex-direction:column;gap:16px;border:1px solid var(--line)}
+.tk .line{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tk .btn{width:auto;padding:0 22px;height:44px}
+.tk .snack{position:static;width:100%}
+.tk .ad{width:100%;border-radius:10px;border:1px solid var(--line)}
+.tk .fab{position:static}
+.appicon{width:76px;height:76px;border-radius:24px;background:#B3226B;display:grid;place-items:center;color:#F5B02E}
+.appicon.mono{background:var(--chip);color:var(--text);border-radius:50%}
+.rules{margin:0;padding-left:18px;color:var(--muted);font-size:14.5px}
+.rules li{margin:5px 0}.rules b{color:var(--text)}
+
+.checks{display:grid;gap:10px;max-width:780px;margin:0;padding:0;list-style:none}
+.checks label{display:flex;gap:14px;align-items:flex-start;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer}
+.checks input{width:22px;height:22px;margin-top:2px;accent-color:var(--brand);flex:none}
+.checks b{display:block}
+.checks span{color:var(--muted);font-size:14.5px}
+footer{padding:48px 0 60px;color:var(--muted);font-size:14px}
+
+/* Copia de seguridad */
+.bk{display:flex;gap:14px;align-items:center;padding:16px;border-radius:22px;background:var(--pric);color:var(--onpric);margin-top:6px}
+.bk .bki{width:48px;height:48px;border-radius:50%;background:var(--sf);color:var(--pri);display:grid;place-items:center;flex:none}
+.bk .t b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:18px;line-height:1.2}
+.bk .t span{display:block;font-size:13.5px;line-height:1.35;margin-top:2px}
+.bk.off{flex-direction:column;align-items:flex-start;gap:10px}
+.bk.off p{margin:0;font-size:14px;line-height:1.4}
+.bkacc{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2);padding:12px 2px 2px}
+.bkacc .av{width:30px;height:30px;font-size:13px}
+.tg{flex:none;width:52px;height:32px;border-radius:16px;background:var(--sf2);border:2px solid var(--ink2);position:relative}
+.tg::after{content:"";position:absolute;top:6px;left:6px;width:16px;height:16px;border-radius:50%;background:var(--ink2)}
+.tg.on{background:var(--pri);border-color:var(--pri)}
+.tg.on::after{left:auto;right:4px;top:4px;width:20px;height:20px;background:var(--onpri)}
+.trust.sm{font-size:12.5px;margin-top:10px}
+/* Ajustes tras revisión */
+.price{flex-wrap:wrap;gap:6px 14px}.price b{white-space:nowrap}.price .btn{flex:1 1 100%;width:100%}
+.screen .chip:not(.on) svg,.tk .chip:not(.on) svg,.screen .seg button:not(.on) svg{display:none}
+.drow{gap:8px}.drow>div{min-width:0}
+.drow .fld{padding:0 6px 0 12px}
+.drow .fld .v{font-size:15px}
+.dialog .acts button,.snack button,.btn{white-space:nowrap}
+</style>
+
+<header class="hero"><div class="wrap">
+  <h1>Cumpleaños: diseño de las pantallas</h1>
+  <p>Todas las vistas de la app, en un solo sitio para que las valides. Usa los interruptores de abajo para ver el modo oscuro y la versión Pro, sin anuncios. Las etiquetas de cada pantalla indican en qué fase llega. Puedes tocar chips, casillas y selectores para probar cómo responden.</p>
+</div></header>
+
+<div class="controls" role="group" aria-label="Opciones de vista"><div class="wrap">
+  <button class="sw" id="swDark" role="switch" aria-checked="false"><i></i>Modo oscuro</button>
+  <button class="sw" id="swPro" role="switch" aria-checked="false"><i></i>Ver como usuario Pro</button>
+  <span class="legend">MVP: lanzamiento. v1.1 y v2: versiones posteriores.</span>
+</div></div>
+
+<main id="gallery" data-app-theme="light"><div class="wrap">
+
+<section class="blk">
+  <h2>Mapa de navegación</h2>
+  <p>Una sola actividad, sin menú lateral. Todo cuelga de Inicio y de ahí se llega a cada pantalla en un toque.</p>
+  <div class="flowbox"><pre class="mermaid">
+flowchart LR
+  A["Primer arranque"] --> B["Aviso previo de anuncios"] --> C["Formulario de consentimiento de Google"] --> D["Inicio"]
+  N["Notificación"] --> D
+  D --> S["Buscar"]
+  D --> E["Nuevo o editar cumpleaños"] --> G["Permiso de avisos"]
+  D --> H["Ajustes"] --> R["Pro"]
+  H --> C
+  D --> R
+  H --> K["Copia de seguridad"]
+  D --> Q["Restaurar desde Drive"]
+  </pre></div>
+</section>
+
+<section class="blk">
+  <h2>1. Primer uso</h2>
+  <p>Lo que ve alguien que abre la app por primera vez, hasta que guarda su primer cumpleaños.</p>
+  <div class="phones" id="s-first"></div>
+</section>
+
+<section class="blk">
+  <h2>2. Día a día</h2>
+  <p>La pantalla que más se usa: lo más cercano arriba, y gestos rápidos para editar o borrar.</p>
+  <div class="phones" id="s-daily"></div>
+</section>
+
+<section class="blk">
+  <h2>3. Avisos fuera de la app</h2>
+  <p>La notificación es la pantalla más importante del producto: es la que evita que se olvide un cumpleaños.</p>
+  <div class="phones" id="s-notif"></div>
+</section>
+
+<section class="blk">
+  <h2>4. Ajustes y Pro</h2>
+  <p>Configuración de los avisos, copia de seguridad, privacidad y la pantalla de compra única.</p>
+  <div class="phones" id="s-set"></div>
+</section>
+
+<section class="blk">
+  <h2>Guía de estilo</h2>
+  <p>Material 3 personalizado. El color y los números grandes de la cuenta atrás dan la personalidad. El resto se mantiene tranquilo.</p>
+  <div class="guide" id="guide"></div>
+</section>
+
+<section class="blk">
+  <h2>Puntos a validar</h2>
+  <p>Marca lo que ya te convence. Lo que dejes sin marcar es lo que ajustaré primero.</p>
+  <ul class="checks" id="checks"></ul>
+</section>
+
+<footer>Diseño v0.1. Las pantallas son maquetas: los datos son de ejemplo y el banner es un marcador de posición.</footer>
+</div></main>
+
+<script>
+/* ---------- Iconos (Material, 24 px) ---------- */
+const IC={
+ back:'M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z',
+ search:'M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z',
+ gear:'M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.49.49 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.48.48 0 0 0-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z',
+ add:'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z',
+ check:'M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z',
+ close:'M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z',
+ del:'M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z',
+ edit:'M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a.996.996 0 0 0 0-1.41l-2.34-2.34a.996.996 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z',
+ bell:'M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z',
+ chev:'M10 6 8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z',
+ down:'M16.59 8.59 12 13.17 7.41 8.59 6 10l6 6 6-6z',
+ cake:'M12 6c1.11 0 2-.9 2-2 0-.38-.1-.73-.29-1.03L12 0l-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm4.6 9.99-1.07-1.07-1.08 1.07c-1.3 1.3-3.58 1.31-4.89 0l-1.07-1.07-1.09 1.07C6.75 16.64 5.88 17 4.96 17c-.73 0-1.4-.23-1.96-.61V21c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-4.61c-.56.38-1.23.61-1.96.61-.92 0-1.79-.36-2.44-1.01zM18 9h-5V7h-2v2H6c-1.66 0-3 1.34-3 3v1.54c0 1.08.88 1.96 1.96 1.96.52 0 1.02-.2 1.38-.57l2.14-2.13 2.13 2.13c.74.74 2.03.74 2.77 0l2.14-2.13 2.13 2.13c.37.37.86.57 1.38.57 1.08 0 1.96-.88 1.96-1.96V12C21 10.34 19.66 9 18 9z',
+ star:'M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z',
+ clock:'M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z',
+ down_f:'M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z',
+ up_f:'M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z',
+ shield:'M12 1 3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z',
+ info:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z',
+ help:'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z',
+ palette:'M12 3a9 9 0 0 0 0 18c1.1 0 2-.9 2-2 0-.52-.2-.99-.52-1.34-.31-.35-.48-.8-.48-1.31a2 2 0 0 1 2-2h2.35A4.65 4.65 0 0 0 22 11.68C22 6.9 17.5 3 12 3zM6.5 12a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3-4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm3 4a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z',
+ sig:'M2 22h20V2z',
+ bat:'M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z',
+ lock:'M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM9 8V6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9z',
+ cloud:'M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z',
+ cloud_done:'M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM10 17l-3.5-3.5 1.41-1.41L10 14.17 15.18 9l1.41 1.41L10 17z',
+ restore:'M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.25 2.52.77-1.28-3.52-2.09V8z',
+ wid:'M13 13v8h8v-8h-8zM3 21h8v-8H3v8zM3 3v8h8V3H3zm13.66-1.31L11 7.34 16.66 13l5.66-5.66-5.66-5.65z'
+};
+const ic=(k,s=24,c='')=>`<svg class="ic ${c}" width="${s}" height="${s}" viewBox="0 0 24 24" fill="currentColor" fill-rule="evenodd" aria-hidden="true"><path d="${IC[k]}"/></svg>`;
+
+/* ---------- Datos de ejemplo (hoy: lunes 21 de septiembre de 2026) ---------- */
+const P=[
+ {n:'María López',d:0,date:'21 sept',age:34,rel:'Amiga',av:0},
+ {n:'Pedro Ruiz',d:3,date:'jue 24 sept',age:40,rel:'Hermano',av:1,note:'Quiere un mando nuevo para la consola.'},
+ {n:'Lucía Fernández',d:6,date:'dom 27 sept',age:31,rel:'Amiga',av:2},
+ {n:'Abuela Carmen',d:12,date:'sáb 3 oct',age:87,rel:'Familia',av:3},
+ {n:'Javier Torres',d:43,date:'3 nov',age:null,rel:'Trabajo',av:4},
+ {n:'Marta Gil',d:84,date:'14 dic',age:36,rel:'Amiga',av:5}
+];
+const GROUPS=[['Esta semana',p=>p.d>=1&&p.d<=7],['Próximas semanas',p=>p.d>=8&&p.d<=30],['Más adelante',p=>p.d>30]];
+const state={pro:false};
+
+/* ---------- Piezas ---------- */
+const status=()=>`<div class="sb"><span>9:41</span><i class="hole"></i><span class="sbi">${ic('sig',13)}${ic('bat',13)}</span></div>`;
+const phone=(inner,o={})=>`<div class="slot"><div class="phone"><div class="screen ${o.cls||''} ${o.ad?'has-ad':''}">${status()}${inner}<div class="gest"></div></div></div></div>`;
+const fig=(ph,title,tags,text)=>`<figure class="fig">${ph}<figcaption><h3>${title}${tags.map(t=>`<span class="ph ${t==='Pro'?'pro':''}">${t}</span>`).join('')}</h3><p>${text}</p></figcaption></figure>`;
+const banner=()=>state.pro?'':`<div class="ad"><span class="b">Anuncio</span>Banner adaptable de AdMob (ejemplo)</div>`;
+const hl=(s,q)=>q?s.replace(new RegExp('('+q+')','ig'),'<mark>$1</mark>'):s;
+const cake=()=>`<svg width="150" height="132" viewBox="0 0 150 132" aria-hidden="true"><style>.c1{fill:var(--pric)}.c2{fill:var(--pri)}.c3{fill:var(--acc)}.c4{fill:var(--ink)}</style>
+<ellipse class="c4" cx="75" cy="122" rx="62" ry="6" opacity=".16"/><rect class="c1" x="24" y="66" width="102" height="52" rx="12"/><rect class="c2" x="24" y="56" width="102" height="24" rx="12"/>
+<circle class="c2" cx="44" cy="82" r="7"/><circle class="c2" cx="75" cy="87" r="8"/><circle class="c2" cx="106" cy="82" r="7"/>
+<rect class="c3" x="50" y="30" width="7" height="26" rx="3.5"/><rect class="c3" x="72" y="30" width="7" height="26" rx="3.5"/><rect class="c3" x="94" y="30" width="7" height="26" rx="3.5"/>
+<path d="M53.5 12c4.5 5 4.5 9.5 0 13-4.5-3.5-4.5-8 0-13z" fill="#FF6B4A"/><path d="M75.5 12c4.5 5 4.5 9.5 0 13-4.5-3.5-4.5-8 0-13z" fill="#FF6B4A"/><path d="M97.5 12c4.5 5 4.5 9.5 0 13-4.5-3.5-4.5-8 0-13z" fill="#FF6B4A"/></svg>`;
+
+const rowH=(p,o={})=>{
+  const sub=o.sub!==undefined?o.sub:p.date+(p.age!=null?`, ${p.age} años`:'');
+  return `<div class="row"><div class="av a${p.av}">${p.n[0]}</div><div class="t"><b><span class="nm">${hl(p.n,o.q)}</span><span class="tag">${p.rel}</span></b><span class="s">${sub}</span></div>${o.nocd?'':`<div class="cd"><b>${p.d}</b><small>${p.d===1?'día':'días'}</small></div>`}</div>`;
+};
+const swipeRow=p=>`<div class="swipe"><div class="under">${ic('del',22)}Eliminar</div>${rowH(p)}</div>`;
+const hoyCard=p=>`<div class="hoy" role="group" aria-label="Cumpleaños de hoy">
+  <i class="cf" style="width:9px;height:9px;left:64%;top:10px;background:#B3226B;transform:rotate(25deg)"></i><i class="cf" style="width:7px;height:12px;left:50%;bottom:8px;background:#2A1A00;transform:rotate(-30deg)"></i><i class="cf" style="width:10px;height:10px;right:10px;bottom:10px;background:#B3226B;border-radius:50%"></i><i class="cf" style="width:6px;height:6px;left:16px;top:8px;background:#2A1A00;border-radius:50%"></i>
+  <div class="av a0">${p.n[0]}</div><div class="t"><b>${p.n}</b><span>Cumple ${p.age} años</span><span class="tag">${p.rel}</span></div>
+  <div class="hr">${ic('cake',30)}<strong>¡Hoy!</strong></div></div>`;
+
+/* ---------- Pantallas ---------- */
+function home(o={}){
+  const list=(o.list||P).filter(p=>!(o.removed||[]).includes(p.n));
+  let body='';
+  const hoy=list.filter(p=>p.d===0);
+  if(hoy.length) body+=`<div class="sec"><div class="sech"><span>Hoy</span></div>${hoy.map(hoyCard).join('')}</div>`;
+  GROUPS.forEach(([t,f])=>{const l=list.filter(f);if(l.length)body+=`<div class="sec"><div class="sech"><span>${t}</span><em>${l.length}</em></div><div class="grp">${l.map(p=>o.swipe===p.n?swipeRow(p):rowH(p)).join('')}</div></div>`;});
+  const n=list.length;
+  return `<div class="bar"><h1>Cumpleaños</h1><button class="ib" aria-label="Buscar">${ic('search')}</button><button class="ib" aria-label="Ajustes">${ic('gear')}</button></div>
+  <div class="subline">${n} ${n===1?'cumpleaños guardado':'cumpleaños guardados'}</div>
+  <div class="body fabpad">${body}</div>
+  ${o.snack?`<div class="snack"><span>${o.snack} eliminado</span><button>Deshacer</button></div>`:''}
+  <button class="fab ${o.snack?'up':''}">${ic('add',24)}Añadir</button>${banner()}
+  ${o.perm?`<div class="scrim"></div><div class="dialog" role="dialog" aria-label="Activar avisos"><div class="bell">${ic('bell',24)}</div><h3>¿Quieres que te avisemos?</h3><p>Para recordarte cada cumpleaños necesitamos permiso para enviarte notificaciones. Solo las usamos para eso.</p><div class="acts"><button>Ahora no</button><button>Activar avisos</button></div></div>`:''}`;
+}
+function homeEmpty(){
+  return `<div class="bar"><h1>Cumpleaños</h1><button class="ib" aria-label="Ajustes">${ic('gear')}</button></div>
+  <div class="empty">${cake()}<h2>Aún no hay cumpleaños</h2><p>Añade el primero y te avisamos con tiempo.</p><button class="btn auto">${ic('add',22)}Añadir cumpleaños</button><button class="btn text auto" style="margin-top:6px">${ic('restore',20)}Recuperar desde Google Drive</button></div>
+  <div class="scrim"></div><div class="sheet"><div class="grab"></div><h3>Cumpleaños es gratis gracias a los anuncios</h3><p>Ahora Google te preguntará cómo puede usar tus datos para mostrarlos. Tus cumpleaños y notas nunca salen de tu móvil.</p><button class="btn">Continuar</button><button class="btn text">Prefiero Pro, sin anuncios</button></div>`;
+}
+const fld=(label,val,o={})=>`<div class="fld ${o.cls||''}"><label>${label}</label><div class="v">${val}${o.chev?ic('down',22):''}</div></div>`;
+function edit(mode){
+  const isNew=mode==='new';
+  const chips=(sel)=>['Familia','Amigos','Trabajo','Otro'].map(c=>`<button class="chip ${c===sel?'on':''}" data-mode="single">${ic('check',16)}${c}</button>`).join('');
+  const proRow=state.pro?`<button class="srow">${ic('bell',24,'lead')}<div class="t"><b>Aviso personalizado</b><span>Usa los avisos de Ajustes</span></div>${ic('chev',22,'lead')}</button>`
+   :`<button class="srow">${ic('bell',24,'lead')}<div class="t"><b>Aviso personalizado</b><span>Usa los avisos de Ajustes</span></div><span class="pro">${ic('lock',11)}Pro</span></button>`;
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><h1>${isNew?'Nuevo cumpleaños':'Editar cumpleaños'}</h1>${isNew?'':`<button class="ib" aria-label="Eliminar cumpleaños">${ic('del')}</button>`}</div>
+  <div class="body form">
+   ${isNew?fld('Nombre','<span class="caret"></span>',{cls:'focus'}):fld('Nombre','Pedro Ruiz')}
+   <div class="flabel">Fecha</div>
+   <div class="drow" style="margin-top:-2px"><div class="d">${fld('Día',isNew?'21':'24',{chev:1,cls:''}).replace('margin-top:20px','')}</div><div class="m">${fld('Mes',isNew?'Septiembre':'Septiembre',{chev:1})}</div><div class="y">${fld('Año',isNew?'<i class="ph2">Año</i>':'1986',{chev:1,cls:'yearf'})}</div></div>
+   <button class="cb" data-year="1"><span class="box">${ic('check',16)}</span>No sé el año</button>
+   <div class="flabel" style="margin-top:8px">Relación (opcional)</div><div class="chips">${chips(isNew?'':'Familia')}</div>
+   ${fld('Notas (opcional)',isNew?'<i class="ph2">Ideas de regalo, gustos, alergias…</i>':P[1].note,{cls:'big'})}
+   <div style="margin-top:8px">${proRow}</div>
+  </div>
+  <div class="foot"><button class="btn">${isNew?'Guardar':'Guardar cambios'}</button></div>`;
+}
+function search(){
+  const q='ma';
+  const hits=[P[0],P[1],P[5]];
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><div class="sbox"><span>${q}<i class="caret" style="height:20px"></i></span><button class="ib" style="width:44px;height:44px" aria-label="Borrar búsqueda">${ic('close',22)}</button></div></div>
+  <div class="subline">3 resultados</div>
+  <div class="body"><div class="grp">${hits.map(p=>rowH(p,{q,sub:p.n==='Pedro Ruiz'?'En notas: '+hl('Quiere un mando nuevo para la consola.',q).replace('para la consola.','…'):undefined})).join('')}</div></div>${banner()}`;
+}
+const chipsMulti=(items)=>items.map(([t,on])=>`<button class="chip ${on?'on':''}" data-mode="multi">${ic('check',16)}${t}</button>`).join('');
+function proCard(){
+  return state.pro
+   ?`<button class="procard"><div class="star">${ic('check',22)}</div><div class="t"><b>Eres Pro</b><span>Gracias por apoyar la app</span></div></button>`
+   :`<button class="procard"><div class="star">${ic('star',22)}</div><div class="t"><b>Cumpleaños Pro</b><span>Sin anuncios y más, con un solo pago</span></div>${ic('chev',22)}</button>`;
+}
+function settings1(){
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><h1>Ajustes</h1></div>
+  <div class="body" style="padding-bottom:24px">
+   ${proCard()}
+   <div class="sh">Avisos</div>
+   <div class="flabel" style="margin:10px 2px 8px">Avisarme</div>
+   <div class="chips" style="padding:0 2px">${chipsMulti([['El mismo día',1],['1 día antes',0],['3 días antes',1],['1 semana antes',0]])}</div>
+   <button class="srow" style="margin-top:8px">${ic('clock',24,'lead')}<div class="t"><b>Hora del aviso</b><span>Los avisos llegan a esta hora</span></div><span class="val">09:00</span></button>
+   <div class="srow">${ic('bell',24,'lead')}<div class="t"><b>Notificaciones</b><span>Activadas en este móvil</span></div>${ic('check',22,'lead')}</div>
+   <div class="sh">Fechas</div>
+   <div class="flabel" style="margin:8px 2px 0">Nacidos el 29 de febrero</div>
+   <div data-rad><button class="radrow on"><span class="rad"></span>Celebrar el 28 de febrero</button><button class="radrow"><span class="rad"></span>Celebrar el 1 de marzo</button></div>
+   <div class="note">Solo afecta a los años que no son bisiestos.</div>
+  </div>`;
+}
+function settings2(){
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><h1>Ajustes</h1></div>
+  <div class="body" style="padding-bottom:24px">
+   <div class="sh" style="margin-top:6px">Apariencia</div>
+   <div class="flabel" style="margin:8px 2px 4px">Tema</div>
+   <div class="seg"><button>${ic('check',16)}Claro</button><button>${ic('check',16)}Oscuro</button><button class="on">${ic('check',16)}Sistema</button></div>
+   <button class="srow">${ic('palette',24,'lead')}<div class="t"><b>Colores de la app</b><span>Elige tu color favorito</span></div>${state.pro?ic('chev',22,'lead'):`<span class="pro">${ic('lock',11)}Pro</span>`}</button>
+   <div class="sh">Datos</div>
+   <button class="srow">${ic('cloud_done',24,'lead')}<div class="t"><b>Copia de seguridad</b><span>Google Drive, última copia hoy a las 9:02</span></div>${ic('chev',22,'lead')}</button>
+   <div class="sh">Privacidad</div>
+   <button class="srow">${ic('shield',24,'lead')}<div class="t"><b>Anuncios y consentimiento</b><span>${state.pro?'Con Pro no se muestran anuncios':'Cambia tu decisión sobre los anuncios'}</span></div>${state.pro?'':ic('chev',22,'lead')}</button>
+   <button class="srow">${ic('info',24,'lead')}<div class="t"><b>Política de privacidad</b><span>Tus datos se quedan en tu móvil</span></div></button>
+   <div class="sh">Ayuda</div>
+   <button class="srow">${ic('help',24,'lead')}<div class="t"><b>Los avisos no me llegan</b><span>Cómo evitar que tu móvil cierre la app</span></div>${ic('chev',22,'lead')}</button>
+   <div class="note" style="text-align:center;padding-top:14px">Cumpleaños 1.0.0</div>
+  </div>`;
+}
+function backup(on){
+  const file=`<div class="sh">Archivo</div>
+   <button class="srow">${ic('down_f',24,'lead')}<div class="t"><b>Exportar a un archivo</b><span>Guarda un JSON donde tú elijas</span></div></button>
+   <button class="srow">${ic('up_f',24,'lead')}<div class="t"><b>Importar desde un archivo</b><span>Añade los cumpleaños de un JSON</span></div></button>`;
+  const head=on?`<div class="bk"><div class="bki">${ic('cloud_done',28)}</div><div class="t"><b>Guardado en Google Drive</b><span>Última copia: hoy a las 9:02<br>6 cumpleaños</span></div></div>
+   <div class="bkacc"><span class="av a3">T</span>tu.cuenta@gmail.com</div>
+   <button class="btn tonal" style="margin-top:14px">${ic('cloud',20)}Copiar ahora</button>
+   <button class="srow" data-tg style="margin-top:6px">${ic('clock',24,'lead')}<div class="t"><b>Copia automática</b><span>Una vez al día, si has hecho cambios</span></div><span class="tg on"></span></button>
+   <button class="srow">${ic('restore',24,'lead')}<div class="t"><b>Restaurar desde Drive</b><span>Sustituye los datos de este móvil por la copia</span></div></button>`
+   :`<div class="bk off"><div class="bki">${ic('cloud',28)}</div><div class="t"><b>Guarda tus cumpleaños en tu Google Drive</b></div><p>Si cambias de móvil o reinstalas la app, los recuperas en un toque.</p><button class="btn" style="margin-top:4px">Conectar Google Drive</button></div>`;
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><h1>Copia de seguridad</h1></div>
+  <div class="body" style="padding-bottom:24px">${head}
+   <div class="trust sm">${ic('lock',20)}<span>Se guarda en una carpeta oculta de tu Drive que solo puede leer esta app. Nadie más ve tus datos, tampoco nosotros.</span></div>
+   ${file}
+   ${on?`<button class="srow">${ic('close',24,'lead')}<div class="t"><b>Desconectar Google Drive</b><span>La copia que ya existe no se borra</span></div></button>`:''}
+  </div>`;
+}
+function homeRestore(){
+  return homeEmpty().split('<div class="scrim">')[0]+`<div class="scrim"></div><div class="dialog" role="dialog" aria-label="Restaurar copia"><div class="bell">${ic('cloud_done',24)}</div><h3>Hay una copia en tu Drive</h3><p>6 cumpleaños, guardada el domingo 20 de septiembre a las 9:02. ¿Quieres restaurarla en este móvil?</p><div class="acts"><button>Empezar de cero</button><button>Restaurar</button></div></div>`;
+}
+function proScreen(){
+  const perks=['Sin anuncios en ninguna pantalla','Colores para personalizar la app','Widget con los próximos cumpleaños','Un aviso distinto para cada persona'];
+  return `<div class="bar back"><button class="ib" aria-label="Volver">${ic('back')}</button><h1>Cumpleaños Pro</h1></div>
+  <div class="body"><div class="proh">
+   <div class="star">${ic(state.pro?'check':'star',28)}</div>
+   <h2>${state.pro?'Gracias por apoyar la app':'Paga una vez. Olvídate de los anuncios.'}</h2>
+   <p>${state.pro?'Tu compra está activa y se recupera sola si cambias de móvil.':'Sin suscripciones ni renovaciones.'}</p>
+   <ul class="perks">${perks.map(t=>`<li>${ic('check',22)}${t}</li>`).join('')}</ul>
+   <div class="trust">${ic('bell',22)}<span><b>Los avisos y la copia de seguridad son gratis para todos, siempre.</b> Pro no quita nada de lo que ya usas.</span></div>
+  </div></div>
+  <div class="foot">${state.pro?`<div class="thanks">${ic('check',20)}Eres Pro</div>`:`<div class="price"><b>3,99 €</b><span>Pago único, sin suscripción</span><button class="btn">Obtener Pro</button></div><button class="btn text" style="height:44px">Restaurar compra</button>`}</div>`;
+}
+function notifScreen(){
+  const ai=`<span class="ai">${ic('cake',12)}</span>`;
+  return `<div class="shade"><div class="clock"><b>9:00</b><span>lunes, 21 de septiembre</span></div>
+  <div class="nt"><div class="h">${ai}Cumpleaños, ahora</div><b>🎂 Hoy cumple años María López</b><p>Cumple 34 años</p><div class="acts"><span class="pv">Felicitar</span></div></div>
+  <div class="nt"><div class="h">${ai}Cumpleaños, ahora</div><b>🎈 Pedro Ruiz cumple años en 3 días</b><p>Cumplirá 40 el jueves 24 de septiembre</p></div>
+  <div class="nt" style="opacity:.85"><div class="h">${ai}Cumpleaños, ahora</div><b>🎂 Hoy cumplen años 2 personas</b><p>Sergio Mora y Ana Vidal</p></div></div>`;
+}
+function widgetScreen(){
+  const w=[P[0],P[1],P[2]];
+  return `<i class="c1"></i><i class="c2"></i><div class="wc"><b>9:41</b><span>lunes, 21 de septiembre</span></div>
+  <div class="wdg"><div class="wh">Próximos cumpleaños<span class="pro">${ic('star',11)}Pro</span></div>
+   ${w.map(p=>`<div class="row"><div class="av a${p.av}">${p.n[0]}</div><div class="t"><b><span class="nm">${p.n}</span></b><span class="s">${p.date}</span></div><div class="cd">${p.d===0?`<b style="font-size:17px">¡Hoy!</b>`:`<b>${p.d}</b><small>días</small>`}</div></div>`).join('')}</div>
+  <div class="dock"><i></i><i></i><i></i><i></i></div>`;
+}
+
+/* ---------- Montaje ---------- */
+const $=id=>document.getElementById(id);
+function render(){
+  const ad={ad:!state.pro};
+  $('s-first').innerHTML=[
+    fig(phone(homeEmpty()),'Aviso previo de anuncios',['MVP'],'Aparece una sola vez, antes del formulario oficial de Google. Deja claro que los cumpleaños nunca salen del móvil. Los usuarios Pro no lo ven.'),
+    fig(phone(homeEmpty().split('<div class="scrim">')[0]),'Inicio vacío',['MVP'],'Sin banner: las pantallas sin contenido no pueden llevar anuncios. Un botón claro para empezar y, debajo, la opción de recuperar una copia si ya usaste la app antes.'),
+    fig(phone(homeRestore()),'Restaurar al reinstalar',['v1.1'],'Tras elegir la cuenta de Google, la app busca la copia y pregunta antes de restaurarla. Si no hay ninguna, lo dice y deja empezar de cero.'),
+    fig(phone(edit('new')),'Nuevo cumpleaños',['MVP'],'Nombre, fecha y guardar. Pulsa «No sé el año» y verás cómo se desactiva el campo del año. Sin anuncios en esta pantalla.'),
+    fig(phone(home({list:[P[2]],perm:true}),ad),'Permiso de avisos',['MVP'],'Se pide justo al guardar el primer cumpleaños, cuando se entiende para qué sirve. Después aparece el diálogo del sistema.')
+  ].join('');
+  $('s-daily').innerHTML=[
+    fig(phone(home(),ad),'Inicio',['MVP'],'Lo más cercano arriba. «Hoy» es lo único en color de énfasis. La cuenta atrás va en grande a la derecha. El botón Añadir queda separado del banner. Activa «Ver como usuario Pro» para quitarlo.'),
+    fig(phone(home({swipe:'Lucía Fernández'}),ad),'Deslizar para borrar',['MVP'],'Deslizar a la izquierda borra. A la derecha edita. Sin anuncios dentro de la lista al lanzar, para evitar toques accidentales.'),
+    fig(phone(home({removed:['Lucía Fernández'],snack:'Lucía Fernández'}),ad),'Borrado con deshacer',['MVP'],'Nunca se borra sin red de seguridad. La barra inferior da unos segundos para deshacer.'),
+    fig(phone(search(),ad),'Buscar',['v1.1'],'Busca en nombres y en notas. Los resultados siguen ordenados por el próximo cumpleaños.'),
+    fig(phone(edit('edit')),'Editar cumpleaños',['MVP','Pro'],'Mismo formulario, ya rellenado, con el borrado arriba a la derecha. El aviso personalizado es una función Pro, visible pero discreta.')
+  ].join('');
+  $('s-notif').innerHTML=[
+    fig(phone(notifScreen(),{cls:'fixeddark'}),'Notificaciones',['MVP'],'El mismo día y con antelación. Si coinciden varios en un día se agrupan en una sola (la tercera). El botón «Felicitar» del primero llega en v2. Nunca llevan anuncios.'),
+    fig(phone(widgetScreen(),{cls:'wall'}),'Widget de próximos cumpleaños',['v2','Pro'],'Muestra los tres siguientes desde la pantalla de inicio del móvil. Se adapta al tema claro u oscuro.')
+  ].join('');
+  $('s-set').innerHTML=[
+    fig(phone(settings1()),'Ajustes: avisos',['MVP'],'Los avisos se combinan con chips: se pueden elegir varios a la vez. La hora es única para toda la app.'),
+    fig(phone(settings2()),'Ajustes: datos y privacidad',['MVP','v1.1'],'La copia de seguridad es una sola fila que abre su propia pantalla. Debajo, el consentimiento de anuncios y ayuda para móviles que cierran apps en segundo plano. Desliza para ver todo.'),
+    fig(phone(backup(false)),'Copia de seguridad sin conectar',['v1.1'],'Un único botón para conectar Drive. La exportación a un archivo JSON sigue disponible para quien no quiera usar Google.'),
+    fig(phone(backup(true)),'Copia de seguridad conectada',['v1.1'],'Muestra cuándo se hizo la última copia y con qué cuenta. La copia automática diaria viene activada. Gratis para todos, también sin Pro.'),
+    fig(phone(proScreen()),'Cumpleaños Pro',['MVP'],'Pago único y sin suscripción como argumento principal. Recuerda que avisos y copia de seguridad siguen siendo gratis, para dar confianza.')
+  ].join('');
+}
+
+/* Guía de estilo */
+const PAL=[['Baya','Primario, botones y números','#B3226B','#FF8DC1'],['Baya suave','Chips activos, contenedores','#FADCEA','#5E1640'],['Azafrán','Solo para «Hoy» y Pro','#F5B02E','#F5B02E'],['Fondo','Fondo de pantalla','#FBF8FD','#170F1F'],['Superficie','Listas y hojas','#FFFFFF','#22172D'],['Texto','Texto principal','#2B1735','#F4EAF8'],['Texto secundario','Fechas y ayudas','#6E5C79','#BCABC9'],['Línea','Separadores','#E6DDED','#3A2A4B']];
+const lum=h=>{const c=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255).map(v=>v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4));return .2126*c[0]+.7152*c[1]+.0722*c[2]};
+const tc=h=>lum(h)>.4?'#25162D':'#fff';
+function guide(){
+  const pal=PAL.map(([n,u,l,d])=>`<div class="swt"><div class="pair"><div style="background:${l};color:${tc(l)}">${l}</div><div style="background:${d};color:${tc(d)}">${d}</div></div><div class="nm"><b>${n}</b><span>${u}</span></div></div>`).join('');
+  const av=[0,1,2,3,4,5].map(i=>`<div class="av a${i}">${'MPLACJ'[i]}</div>`).join('');
+  return `
+  <div class="card" style="grid-column:1/-1"><h3>Color</h3><p style="margin:-6px 0 14px;color:var(--muted);font-size:14.5px">Cada muestra enseña el tono claro a la izquierda y el oscuro a la derecha. Con Android 12 o superior se puede usar el color del fondo de pantalla del usuario (Dynamic Color), y esta paleta queda como respaldo.</p><div class="sw-grid">${pal}</div></div>
+  <div class="card"><h3>Tipografía</h3><div class="tsamp">
+    <div><span style="font:700 28px 'Bricolage Grotesque',sans-serif">Cumpleaños</span><small>Título de pantalla<br>Bricolage Grotesque 28, negrita</small></div>
+    <div><span style="font:700 26px 'Bricolage Grotesque',sans-serif;color:var(--brand)">12</span><small>Cuenta atrás y números<br>Bricolage Grotesque 26</small></div>
+    <div><span style="font:600 16px 'Figtree',sans-serif">Lucía Fernández</span><small>Nombre<br>Figtree 16, seminegrita</small></div>
+    <div><span style="font:400 14px 'Figtree',sans-serif">dom 27 sept, 31 años</span><small>Detalle<br>Figtree 14</small></div>
+    <div><span style="font:700 13px 'Figtree',sans-serif;color:var(--brand)">Avisos</span><small>Título de sección<br>Figtree 13, negrita</small></div>
+  </div><p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">Ambas familias son gratuitas en Google Fonts y se pueden incluir en la app. Todo el texto escala hasta el 200 % sin romper el diseño.</p></div>
+  <div class="card"><h3>Componentes</h3><div class="tk demo">
+    <div class="line"><button class="btn">Guardar</button><button class="btn tonal">Tonal</button><button class="btn text">Texto</button></div>
+    <div class="line"><button class="chip on" data-mode="multi">${ic('check',16)}Activo</button><button class="chip" data-mode="multi">${ic('check',16)}Inactivo</button><span class="tag">Amiga</span><span class="pro">${ic('lock',11)}Pro</span></div>
+    <div class="line">${av}</div>
+    <div class="line"><button class="fab">${ic('add',24)}Añadir</button><div class="cd" style="margin-left:auto"><b>3</b><small>días</small></div></div>
+    <div class="snack"><span>Pedro Ruiz eliminado</span><button>Deshacer</button></div>
+    <div class="ad"><span class="b">Anuncio</span>Banner adaptable de AdMob</div>
+  </div></div>
+  <div class="card"><h3>Icono</h3><div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap"><div class="appicon">${ic('cake',44)}</div><div class="appicon mono">${ic('cake',30)}</div><p style="flex:1;min-width:180px;margin:0;color:var(--muted);font-size:14.5px">Tarta en azafrán sobre baya. A la izquierda, el icono de la app. A la derecha, la versión de una sola tinta para la barra de notificaciones.</p></div></div>
+  <div class="card"><h3>Reglas de diseño</h3><ul class="rules">
+    <li><b>Márgenes de 16 dp</b> y cuadrícula de 8 dp.</li>
+    <li><b>Zonas táctiles de 48 dp</b> como mínimo.</li>
+    <li><b>Esquinas:</b> 12 dp en campos, 20 dp en listas, 26 dp en «Hoy» y 30 dp en hojas.</li>
+    <li><b>Contraste AA</b> en claro y oscuro, y descripción de accesibilidad en todos los iconos.</li>
+    <li><b>Anuncios:</b> solo el banner de Inicio. Nunca en «Hoy», en formularios, en Ajustes ni en notificaciones.</li>
+    <li><b>Textos</b> en español, en frase normal y con tono cercano. Todos en <code>strings.xml</code> para poder traducirlos.</li>
+  </ul></div>`;
+}
+const CHECKS=[
+ ['Paleta baya y azafrán','¿Te representa? El azafrán se reserva para el cumpleaños de hoy y para Pro.'],
+ ['Cuenta atrás grande a la derecha','Cada fila muestra los días que faltan como número grande, en lugar de un texto pequeño.'],
+ ['Secciones de Inicio','Hoy, Esta semana, Próximas semanas y Más adelante. Cambié «Este mes» porque un cumpleaños del día 3 del mes siguiente quedaba mal etiquetado.'],
+ ['Botón «Añadir» con texto','En lugar de un botón redondo solo con «+», para que se entienda sin pensar.'],
+ ['Banner fijo abajo y nada más al lanzar','Sin anuncios en el estado vacío, en formularios ni dentro de la lista.'],
+ ['Pro a 3,99 € con pago único','Con el mensaje «avisos y copia de seguridad, gratis siempre» como garantía.'],
+ ['Notificaciones con emoji','🎂 el mismo día y 🎈 con antelación, con el nombre y la edad en el texto.'],
+ ['Copia en Google Drive','Conectar en un toque, copia automática diaria y restaurar al reinstalar. El archivo JSON local se mantiene como alternativa.'],
+ ['Ajustes','¿Falta algo que quieras configurar? ¿Sobra algo?']
+];
+function checks(){$('checks').innerHTML=CHECKS.map(([t,d])=>`<li><label><input type="checkbox"><span><b>${t}</b><span>${d}</span></span></label></li>`).join('');}
+
+/* ---------- Interacción ---------- */
+function fit(){const k=Math.min(1,(document.documentElement.clientWidth-32)/344);document.documentElement.style.setProperty('--k',k.toFixed(3))}
+addEventListener('resize',fit);
+function full(){render();$('guide').innerHTML=guide();}
+document.addEventListener('click',e=>{
+  const chip=e.target.closest('.chip[data-mode]');
+  if(chip){ if(chip.dataset.mode==='single'){chip.parentElement.querySelectorAll('.chip').forEach(c=>c!==chip&&c.classList.remove('on'));chip.classList.toggle('on');} else chip.classList.toggle('on'); return; }
+  const cb=e.target.closest('.cb[data-year]');
+  if(cb){cb.classList.toggle('on');const f=cb.closest('.body').querySelector('.yearf');if(f)f.classList.toggle('dis',cb.classList.contains('on'));return;}
+  const tgr=e.target.closest('[data-tg]');
+  if(tgr){tgr.querySelector('.tg').classList.toggle('on');return;}
+  const rad=e.target.closest('[data-rad] .radrow');
+  if(rad){rad.parentElement.querySelectorAll('.radrow').forEach(r=>r.classList.remove('on'));rad.classList.add('on');return;}
+  const seg=e.target.closest('.seg button');
+  if(seg){seg.parentElement.querySelectorAll('button').forEach(b=>b.classList.remove('on'));seg.classList.add('on');}
+});
+$('swDark').addEventListener('click',e=>{const on=e.currentTarget.getAttribute('aria-checked')!=='true';e.currentTarget.setAttribute('aria-checked',on);$('gallery').dataset.appTheme=on?'dark':'light';});
+$('swPro').addEventListener('click',e=>{const on=e.currentTarget.getAttribute('aria-checked')!=='true';e.currentTarget.setAttribute('aria-checked',on);state.pro=on;full();});
+fit();full();checks();
+</script>
+<script>mermaid.initialize({startOnLoad:true});</script></html>
