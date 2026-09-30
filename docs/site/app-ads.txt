@@ -1,0 +1,9 @@
+# app-ads.txt de Candelio — PENDIENTE de completar.
+#
+# Cuando tengas tu cuenta de AdMob/AdSense real, sustituye la línea de abajo
+# por la que te indique tu cuenta (Google le pedirá que publiques exactamente
+# ese texto en https://<tu-dominio>/app-ads.txt).
+#
+# Formato: google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+#
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

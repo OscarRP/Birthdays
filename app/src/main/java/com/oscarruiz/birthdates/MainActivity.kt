@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import com.oscarruiz.birthdates.domain.model.AppSettings
 import com.oscarruiz.birthdates.domain.model.ThemeMode
 import com.oscarruiz.birthdates.ui.navigation.AppNavHost
-import com.oscarruiz.birthdates.ui.theme.BirthdaysTheme
+import com.oscarruiz.birthdates.ui.theme.CandelioTheme
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val container = (application as BirthdaysApp).container
+        val container = (application as CandelioApp).container
 
         // Comprueba la compra Pro en cada arranque (restaura tras reinstalar o reembolsos).
         container.billingRepository.connect()
@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
             val settings: AppSettings? by container.settingsRepository.settings
                 .collectAsStateWithLifecycle<AppSettings?>(initialValue = null)
             val current = settings
-            BirthdaysTheme(themeMode = current?.themeMode ?: ThemeMode.SYSTEM) {
+            CandelioTheme(themeMode = current?.themeMode ?: ThemeMode.SYSTEM) {
                 if (current == null) {
                     Surface(Modifier.fillMaxSize()) {}
                 } else {

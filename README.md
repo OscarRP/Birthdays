@@ -1,4 +1,4 @@
-# Birthdays
+# Candelio
 
 App Android para guardar cumpleaños y recibir avisos. Kotlin, Jetpack Compose y Material 3, sin backend propio.
 
@@ -19,7 +19,7 @@ En depuración se usan los **IDs de prueba de AdMob** y se simula estar en la UE
 
 ```
 app/src/main/java/com/oscarruiz/birthdates/
-├── BirthdaysApp / AppContainer   Arranque e inyección de dependencias manual
+├── CandelioApp / AppContainer   Arranque e inyección de dependencias manual
 ├── MainActivity                  Actividad única
 ├── domain/                       Kotlin puro: modelo y cálculo de fechas
 ├── data/                         Room (cumpleaños) y DataStore (ajustes)

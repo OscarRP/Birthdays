@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Birthdays"
+rootProject.name = "Candelio"
 include(":app")

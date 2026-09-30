@@ -117,7 +117,7 @@ private val AppTypography = Typography(
 )
 
 @Composable
-fun BirthdaysTheme(themeMode: ThemeMode, content: @Composable () -> Unit) {
+fun CandelioTheme(themeMode: ThemeMode, content: @Composable () -> Unit) {
     val dark = when (themeMode) {
         ThemeMode.SYSTEM -> isSystemInDarkTheme()
         ThemeMode.LIGHT -> false

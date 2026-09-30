@@ -13,7 +13,7 @@ import com.google.android.gms.auth.api.identity.AuthorizationRequest
 import com.google.android.gms.auth.api.identity.AuthorizationResult
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.common.api.Scope
-import com.oscarruiz.birthdates.BirthdaysApp
+import com.oscarruiz.birthdates.CandelioApp
 import com.oscarruiz.birthdates.data.BirthdayRepository
 import com.oscarruiz.birthdates.data.SettingsRepository
 import com.oscarruiz.birthdates.domain.model.Birthday
@@ -199,7 +199,7 @@ class DriveBackupRepository(
 class BackupWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        val container = (applicationContext as BirthdaysApp).container
+        val container = (applicationContext as CandelioApp).container
         val settings = container.settingsRepository.settings.first()
         if (!settings.driveConnected || !settings.autoBackup || !settings.backupPending) return Result.success()
 

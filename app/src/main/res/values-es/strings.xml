@@ -52,11 +52,11 @@
     <string name="home_empty_body">Añade el primero y te avisamos con tiempo.</string>
     <string name="home_empty_add">Añadir cumpleaños</string>
     <string name="home_empty_restore">Recuperar desde Google Drive</string>
-    <string name="home_pro_prompt">¿Te gusta Birthdays? Quita los anuncios con un pago único.</string>
+    <string name="home_pro_prompt">¿Te gusta Candelio? Quita los anuncios con un pago único.</string>
     <string name="home_pro_prompt_action">Ver Pro</string>
 
     <!-- Aviso de anuncios y permiso de notificaciones -->
-    <string name="ads_intro_title">Birthdays es gratis gracias a los anuncios</string>
+    <string name="ads_intro_title">Candelio es gratis gracias a los anuncios</string>
     <string name="ads_intro_body">Ahora Google te preguntará cómo puede usar tus datos para mostrarlos. Tus cumpleaños y notas nunca salen de tu móvil.</string>
     <string name="ads_intro_pro">Prefiero Pro, sin anuncios</string>
     <string name="notif_permission_title">¿Quieres que te avisemos?</string>
@@ -119,9 +119,9 @@
     <string name="settings_help">Ayuda</string>
     <string name="settings_help_reminders">Los avisos no me llegan</string>
     <string name="settings_help_reminders_hint">Cómo evitar que tu móvil cierre la app</string>
-    <string name="help_battery_body">Algunos móviles cierran las apps en segundo plano para ahorrar batería, y eso puede retrasar o bloquear los avisos. Abre los ajustes de batería y marca Birthdays como \"Sin restricciones\" o \"No optimizar\".</string>
+    <string name="help_battery_body">Algunos móviles cierran las apps en segundo plano para ahorrar batería, y eso puede retrasar o bloquear los avisos. Abre los ajustes de batería y marca Candelio como \"Sin restricciones\" o \"No optimizar\".</string>
     <string name="help_battery_open">Abrir ajustes de batería</string>
-    <string name="settings_version">Birthdays %1$s</string>
+    <string name="settings_version">Candelio %1$s</string>
 
     <!-- Copia de seguridad -->
     <string name="backup_title">Copia de seguridad</string>
@@ -170,7 +170,7 @@
         <item quantity="other">%1$d cumpleaños importados</item>
     </plurals>
     <string name="backup_msg_none">Todavía no hay ninguna copia en este Google Drive.</string>
-    <string name="backup_msg_invalid">Ese archivo no es una copia de Birthdays.</string>
+    <string name="backup_msg_invalid">Ese archivo no es una copia de Candelio.</string>
     <string name="backup_msg_error">Algo ha fallado. Revisa la conexión y vuelve a intentarlo.</string>
     <string name="restore_title">Hay una copia en tu Drive</string>
     <plurals name="restore_body_count">
@@ -188,7 +188,7 @@
     <string name="restore_dismiss">Ahora no</string>
 
     <!-- Pro -->
-    <string name="pro_title">Birthdays Pro</string>
+    <string name="pro_title">Candelio Pro</string>
     <string name="pro_badge">Pro</string>
     <string name="pro_headline">Paga una vez. Olvídate de los anuncios.</string>
     <string name="pro_sub">Sin suscripciones ni renovaciones.</string>

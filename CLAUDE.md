@@ -1,4 +1,12 @@
-# Birthdays: contexto del proyecto
+# Candelio: contexto del proyecto
+
+> **Nombre: Candelio** (decidido el 22/09/2026; renombrado el 27/09/2026).
+> Ya están renombrados: `app_name`, los textos de la interfaz, `rootProject.name`, el tema `Theme.Candelio`
+> y las clases `CandelioApp` / `CandelioTheme`. **El paquete `com.oscarruiz.birthdates` NO cambia**, y tampoco
+> los nombres internos `birthdays.db` (Room) ni `birthdays.json` (copia en Drive): son invisibles para el usuario
+> y cambiarlos rompería las instalaciones y copias existentes.
+> Título en Google Play: «Candelio: cumpleaños y fechas» / «Candelio: Birthday Reminder».
+> Dominio previsto: `candelio.app` (libre el 22/09/2026, pendiente de registrar). Antes, comprobar la marca en TMview.
 
 App Android para guardar los cumpleaños de familiares y amigos y avisar cuando se acercan. Autor: Óscar (OscarRP en GitHub). Repositorio: https://github.com/OscarRP/birthdates (ramas `master` y `develop`).
 
@@ -73,4 +81,5 @@ Decisiones técnicas:
 
 - El código base se generó sin poder compilar en el entorno original: **la lógica de fechas está verificada** (tests), el resto hay que compilarlo y probarlo aquí.
 - Pendiente fuera del código (ver README): IDs reales de AdMob, producto `remove_ads_pro` en Play Console, cliente OAuth Android con SHA-1 en Google Cloud para Drive, URL de la política de privacidad (`PRIVACY_POLICY_URL` en `SettingsScreen.kt`), formulario de Seguridad de los datos.
+- Hoja de ruta por versiones: `docs/ROADMAP.md`.
 - Siguientes pasos sugeridos: que compile y pase lint → probar en emulador → GitHub Action que compile y pase tests en `develop` → tipografías → funciones Pro.

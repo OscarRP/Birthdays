@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name" translatable="false">Birthdays</string>
+    <string name="app_name" translatable="false">Candelio</string>
 
     <!-- Common actions -->
     <string name="action_add">Add</string>
@@ -51,11 +51,11 @@
     <string name="home_empty_body">Add the first one and we\'ll remind you in good time.</string>
     <string name="home_empty_add">Add birthday</string>
     <string name="home_empty_restore">Restore from Google Drive</string>
-    <string name="home_pro_prompt">Enjoying Birthdays? Remove ads with a one-time payment.</string>
+    <string name="home_pro_prompt">Enjoying Candelio? Remove ads with a one-time payment.</string>
     <string name="home_pro_prompt_action">See Pro</string>
 
     <!-- Ads intro and notification permission -->
-    <string name="ads_intro_title">Birthdays is free thanks to ads</string>
+    <string name="ads_intro_title">Candelio is free thanks to ads</string>
     <string name="ads_intro_body">Next, Google will ask how it can use your data to show them. Your birthdays and notes never leave your phone.</string>
     <string name="ads_intro_pro">I\'d rather go Pro, no ads</string>
     <string name="notif_permission_title">Want us to remind you?</string>
@@ -118,9 +118,9 @@
     <string name="settings_help">Help</string>
     <string name="settings_help_reminders">Reminders don\'t arrive</string>
     <string name="settings_help_reminders_hint">How to stop your phone closing the app</string>
-    <string name="help_battery_body">Some phones close apps in the background to save battery, which can delay or block reminders. Open the battery settings and set Birthdays to \"Unrestricted\" or \"Don\'t optimise\".</string>
+    <string name="help_battery_body">Some phones close apps in the background to save battery, which can delay or block reminders. Open the battery settings and set Candelio to \"Unrestricted\" or \"Don\'t optimise\".</string>
     <string name="help_battery_open">Open battery settings</string>
-    <string name="settings_version">Birthdays %1$s</string>
+    <string name="settings_version">Candelio %1$s</string>
 
     <!-- Backup -->
     <string name="backup_title">Backup</string>
@@ -164,7 +164,7 @@
         <item quantity="other">%1$d birthdays imported</item>
     </plurals>
     <string name="backup_msg_none">There\'s no backup in this Google Drive yet.</string>
-    <string name="backup_msg_invalid">That file isn\'t a Birthdays backup.</string>
+    <string name="backup_msg_invalid">That file isn\'t a Candelio backup.</string>
     <string name="backup_msg_error">Something went wrong. Check your connection and try again.</string>
     <string name="restore_title">There\'s a backup in your Drive</string>
     <plurals name="restore_body_count">
@@ -180,7 +180,7 @@
     <string name="restore_dismiss">Not now</string>
 
     <!-- Pro -->
-    <string name="pro_title">Birthdays Pro</string>
+    <string name="pro_title">Candelio Pro</string>
     <string name="pro_badge">Pro</string>
     <string name="pro_headline">Pay once. Forget about ads.</string>
     <string name="pro_sub">No subscriptions or renewals.</string>

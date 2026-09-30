@@ -8,7 +8,7 @@ import androidx.work.ExistingWorkPolicy
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import androidx.work.WorkerParameters
-import com.oscarruiz.birthdates.BirthdaysApp
+import com.oscarruiz.birthdates.CandelioApp
 import com.oscarruiz.birthdates.domain.BirthdayCalculator
 import com.oscarruiz.birthdates.domain.model.AppSettings
 import kotlinx.coroutines.flow.first
@@ -53,7 +53,7 @@ object ReminderScheduler {
 class ReminderWorker(context: Context, params: WorkerParameters) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
-        val container = (applicationContext as BirthdaysApp).container
+        val container = (applicationContext as CandelioApp).container
         val settingsRepo = container.settingsRepository
         val settings = settingsRepo.settings.first()
         val today = LocalDate.now()
@@ -80,7 +80,7 @@ class BootReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != Intent.ACTION_BOOT_COMPLETED) return
         val pending = goAsync()
-        val container = (context.applicationContext as BirthdaysApp).container
+        val container = (context.applicationContext as CandelioApp).container
         container.appScope.launch {
             try {
                 ReminderScheduler.schedule(context.applicationContext, container.settingsRepository.settings.first())

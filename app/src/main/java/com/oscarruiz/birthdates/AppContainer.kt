@@ -44,7 +44,7 @@ class AppContainer(context: Context) {
     }
 }
 
-class BirthdaysApp : Application() {
+class CandelioApp : Application() {
     lateinit var container: AppContainer
         private set
 
