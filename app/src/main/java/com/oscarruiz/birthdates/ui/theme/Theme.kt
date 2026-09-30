@@ -1,6 +1,7 @@
 package com.oscarruiz.birthdates.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
@@ -11,72 +12,166 @@ import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.oscarruiz.birthdates.domain.model.AccentColor
 import com.oscarruiz.birthdates.domain.model.ThemeMode
 
-// Paleta del diseño: baya (primario) y azafrán (solo "Hoy" y Pro).
-private val LightColors = lightColorScheme(
-    primary = Color(0xFFB3226B),
-    onPrimary = Color(0xFFFFFFFF),
-    primaryContainer = Color(0xFFFADCEA),
-    onPrimaryContainer = Color(0xFF5C0F35),
-    secondary = Color(0xFF6E5C79),
-    onSecondary = Color(0xFFFFFFFF),
-    secondaryContainer = Color(0xFFF2ECF7),
-    onSecondaryContainer = Color(0xFF2B1735),
-    tertiary = Color(0xFFF5B02E),
-    onTertiary = Color(0xFF2A1A00),
-    tertiaryContainer = Color(0xFFFFE9B8),
-    onTertiaryContainer = Color(0xFF2A1A00),
-    background = Color(0xFFFBF8FD),
-    onBackground = Color(0xFF2B1735),
-    surface = Color(0xFFFBF8FD),
-    onSurface = Color(0xFF2B1735),
-    surfaceVariant = Color(0xFFF2ECF7),
-    onSurfaceVariant = Color(0xFF6E5C79),
-    surfaceContainerLowest = Color(0xFFFFFFFF),
-    surfaceContainerLow = Color(0xFFFFFFFF),
-    surfaceContainer = Color(0xFFF6F1F9),
-    surfaceContainerHigh = Color(0xFFF2ECF7),
-    surfaceContainerHighest = Color(0xFFECE5F1),
-    outline = Color(0xFF6E5C79),
-    outlineVariant = Color(0xFFE6DDED),
-    inverseSurface = Color(0xFF33253D),
-    inverseOnSurface = Color(0xFFF4EAF8),
-    inversePrimary = Color(0xFFFF9FCB),
-    error = Color(0xFFB3261E),
+/**
+ * Solo cambia la familia "primary" según el color de acento elegido (función Pro).
+ * El resto de la paleta (secundarios, superficies, azafrán de "Hoy"/Pro) es siempre igual.
+ */
+private data class AccentTones(
+    val lightPrimary: Color,
+    val lightOnPrimary: Color,
+    val lightPrimaryContainer: Color,
+    val lightOnPrimaryContainer: Color,
+    val lightInversePrimary: Color,
+    val darkPrimary: Color,
+    val darkOnPrimary: Color,
+    val darkPrimaryContainer: Color,
+    val darkOnPrimaryContainer: Color,
+    val darkInversePrimary: Color,
 )
 
-private val DarkColors = darkColorScheme(
-    primary = Color(0xFFFF8DC1),
-    onPrimary = Color(0xFF4A0A2C),
-    primaryContainer = Color(0xFF5E1640),
-    onPrimaryContainer = Color(0xFFFFD9EA),
-    secondary = Color(0xFFBCABC9),
-    onSecondary = Color(0xFF2B1735),
-    secondaryContainer = Color(0xFF2E2040),
-    onSecondaryContainer = Color(0xFFF4EAF8),
-    tertiary = Color(0xFFF5B02E),
-    onTertiary = Color(0xFF2A1A00),
-    tertiaryContainer = Color(0xFF4B3610),
-    onTertiaryContainer = Color(0xFFFFDF9E),
-    background = Color(0xFF170F1F),
-    onBackground = Color(0xFFF4EAF8),
-    surface = Color(0xFF170F1F),
-    onSurface = Color(0xFFF4EAF8),
-    surfaceVariant = Color(0xFF2E2040),
-    onSurfaceVariant = Color(0xFFBCABC9),
-    surfaceContainerLowest = Color(0xFF120B18),
-    surfaceContainerLow = Color(0xFF22172D),
-    surfaceContainer = Color(0xFF261B32),
-    surfaceContainerHigh = Color(0xFF2E2040),
-    surfaceContainerHighest = Color(0xFF372849),
-    outline = Color(0xFFBCABC9),
-    outlineVariant = Color(0xFF3A2A4B),
-    inverseSurface = Color(0xFFEADFF0),
-    inverseOnSurface = Color(0xFF2B1735),
-    inversePrimary = Color(0xFFB3226B),
-    error = Color(0xFFF2665C),
+private val AccentTonesByColor: Map<AccentColor, AccentTones> = mapOf(
+    // Baya: el color original de Candelio.
+    AccentColor.BERRY to AccentTones(
+        lightPrimary = Color(0xFFB3226B),
+        lightOnPrimary = Color(0xFFFFFFFF),
+        lightPrimaryContainer = Color(0xFFFADCEA),
+        lightOnPrimaryContainer = Color(0xFF5C0F35),
+        lightInversePrimary = Color(0xFFFF9FCB),
+        darkPrimary = Color(0xFFFF8DC1),
+        darkOnPrimary = Color(0xFF4A0A2C),
+        darkPrimaryContainer = Color(0xFF5E1640),
+        darkOnPrimaryContainer = Color(0xFFFFD9EA),
+        darkInversePrimary = Color(0xFFB3226B),
+    ),
+    AccentColor.OCEAN to AccentTones(
+        lightPrimary = Color(0xFF1B6EC2),
+        lightOnPrimary = Color(0xFFFFFFFF),
+        lightPrimaryContainer = Color(0xFFD7E7FA),
+        lightOnPrimaryContainer = Color(0xFF08315A),
+        lightInversePrimary = Color(0xFF9ECBFF),
+        darkPrimary = Color(0xFF9ECBFF),
+        darkOnPrimary = Color(0xFF00315C),
+        darkPrimaryContainer = Color(0xFF114A82),
+        darkOnPrimaryContainer = Color(0xFFD7E7FA),
+        darkInversePrimary = Color(0xFF1B6EC2),
+    ),
+    AccentColor.FOREST to AccentTones(
+        lightPrimary = Color(0xFF2E7D46),
+        lightOnPrimary = Color(0xFFFFFFFF),
+        lightPrimaryContainer = Color(0xFFD8F0DC),
+        lightOnPrimaryContainer = Color(0xFF0B3D18),
+        lightInversePrimary = Color(0xFF8FDB9E),
+        darkPrimary = Color(0xFF8FDB9E),
+        darkOnPrimary = Color(0xFF063814),
+        darkPrimaryContainer = Color(0xFF1B5C2C),
+        darkOnPrimaryContainer = Color(0xFFD8F0DC),
+        darkInversePrimary = Color(0xFF2E7D46),
+    ),
+    AccentColor.SUNSET to AccentTones(
+        lightPrimary = Color(0xFFC1461F),
+        lightOnPrimary = Color(0xFFFFFFFF),
+        lightPrimaryContainer = Color(0xFFFFDBCB),
+        lightOnPrimaryContainer = Color(0xFF4A1400),
+        lightInversePrimary = Color(0xFFFFB59A),
+        darkPrimary = Color(0xFFFFB59A),
+        darkOnPrimary = Color(0xFF5C1D00),
+        darkPrimaryContainer = Color(0xFF8A2E0A),
+        darkOnPrimaryContainer = Color(0xFFFFDBCB),
+        darkInversePrimary = Color(0xFFC1461F),
+    ),
+    AccentColor.LAVENDER to AccentTones(
+        lightPrimary = Color(0xFF6E4DB8),
+        lightOnPrimary = Color(0xFFFFFFFF),
+        lightPrimaryContainer = Color(0xFFE7DEFF),
+        lightOnPrimaryContainer = Color(0xFF251054),
+        lightInversePrimary = Color(0xFFCDBBFF),
+        darkPrimary = Color(0xFFCDBBFF),
+        darkOnPrimary = Color(0xFF38217A),
+        darkPrimaryContainer = Color(0xFF4F3894),
+        darkOnPrimaryContainer = Color(0xFFE7DEFF),
+        darkInversePrimary = Color(0xFF6E4DB8),
+    ),
 )
+
+/** Color representativo del acento, para pintar el círculo del selector en Ajustes. */
+fun AccentColor.swatch(dark: Boolean): Color {
+    val tones = AccentTonesByColor.getValue(this)
+    return if (dark) tones.darkPrimary else tones.lightPrimary
+}
+
+// Paleta del diseño: baya (primario por defecto) y azafrán (solo "Hoy" y Pro).
+private fun lightColors(accent: AccentColor): ColorScheme {
+    val t = AccentTonesByColor.getValue(accent)
+    return lightColorScheme(
+        primary = t.lightPrimary,
+        onPrimary = t.lightOnPrimary,
+        primaryContainer = t.lightPrimaryContainer,
+        onPrimaryContainer = t.lightOnPrimaryContainer,
+        secondary = Color(0xFF6E5C79),
+        onSecondary = Color(0xFFFFFFFF),
+        secondaryContainer = Color(0xFFF2ECF7),
+        onSecondaryContainer = Color(0xFF2B1735),
+        tertiary = Color(0xFFF5B02E),
+        onTertiary = Color(0xFF2A1A00),
+        tertiaryContainer = Color(0xFFFFE9B8),
+        onTertiaryContainer = Color(0xFF2A1A00),
+        background = Color(0xFFFBF8FD),
+        onBackground = Color(0xFF2B1735),
+        surface = Color(0xFFFBF8FD),
+        onSurface = Color(0xFF2B1735),
+        surfaceVariant = Color(0xFFF2ECF7),
+        onSurfaceVariant = Color(0xFF6E5C79),
+        surfaceContainerLowest = Color(0xFFFFFFFF),
+        surfaceContainerLow = Color(0xFFFFFFFF),
+        surfaceContainer = Color(0xFFF6F1F9),
+        surfaceContainerHigh = Color(0xFFF2ECF7),
+        surfaceContainerHighest = Color(0xFFECE5F1),
+        outline = Color(0xFF6E5C79),
+        outlineVariant = Color(0xFFE6DDED),
+        inverseSurface = Color(0xFF33253D),
+        inverseOnSurface = Color(0xFFF4EAF8),
+        inversePrimary = t.lightInversePrimary,
+        error = Color(0xFFB3261E),
+    )
+}
+
+private fun darkColors(accent: AccentColor): ColorScheme {
+    val t = AccentTonesByColor.getValue(accent)
+    return darkColorScheme(
+        primary = t.darkPrimary,
+        onPrimary = t.darkOnPrimary,
+        primaryContainer = t.darkPrimaryContainer,
+        onPrimaryContainer = t.darkOnPrimaryContainer,
+        secondary = Color(0xFFBCABC9),
+        onSecondary = Color(0xFF2B1735),
+        secondaryContainer = Color(0xFF2E2040),
+        onSecondaryContainer = Color(0xFFF4EAF8),
+        tertiary = Color(0xFFF5B02E),
+        onTertiary = Color(0xFF2A1A00),
+        tertiaryContainer = Color(0xFF4B3610),
+        onTertiaryContainer = Color(0xFFFFDF9E),
+        background = Color(0xFF170F1F),
+        onBackground = Color(0xFFF4EAF8),
+        surface = Color(0xFF170F1F),
+        onSurface = Color(0xFFF4EAF8),
+        surfaceVariant = Color(0xFF2E2040),
+        onSurfaceVariant = Color(0xFFBCABC9),
+        surfaceContainerLowest = Color(0xFF120B18),
+        surfaceContainerLow = Color(0xFF22172D),
+        surfaceContainer = Color(0xFF261B32),
+        surfaceContainerHigh = Color(0xFF2E2040),
+        surfaceContainerHighest = Color(0xFF372849),
+        outline = Color(0xFFBCABC9),
+        outlineVariant = Color(0xFF3A2A4B),
+        inverseSurface = Color(0xFFEADFF0),
+        inverseOnSurface = Color(0xFF2B1735),
+        inversePrimary = t.darkInversePrimary,
+        error = Color(0xFFF2665C),
+    )
+}
 
 /** Colores de los avatares con la inicial: (fondo, texto). */
 @Immutable
@@ -117,7 +212,11 @@ private val AppTypography = Typography(
 )
 
 @Composable
-fun CandelioTheme(themeMode: ThemeMode, content: @Composable () -> Unit) {
+fun CandelioTheme(
+    themeMode: ThemeMode,
+    accentColor: AccentColor = AccentColor.BERRY,
+    content: @Composable () -> Unit,
+) {
     val dark = when (themeMode) {
         ThemeMode.SYSTEM -> isSystemInDarkTheme()
         ThemeMode.LIGHT -> false
@@ -127,7 +226,7 @@ fun CandelioTheme(themeMode: ThemeMode, content: @Composable () -> Unit) {
         LocalAvatarColors provides if (dark) DarkAvatars else LightAvatars,
     ) {
         MaterialTheme(
-            colorScheme = if (dark) DarkColors else LightColors,
+            colorScheme = if (dark) darkColors(accentColor) else lightColors(accentColor),
             typography = AppTypography,
             content = content,
         )

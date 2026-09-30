@@ -11,6 +11,7 @@ import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import com.oscarruiz.birthdates.domain.model.AccentColor
 import com.oscarruiz.birthdates.domain.model.AppSettings
 import com.oscarruiz.birthdates.domain.model.LeapDayPolicy
 import com.oscarruiz.birthdates.domain.model.ReminderOffsets
@@ -37,6 +38,7 @@ class SettingsRepository(context: Context) {
         val LAST_REMINDER_DATE = stringPreferencesKey("last_reminder_date")
         val LEAP_POLICY = stringPreferencesKey("leap_day_policy")
         val THEME = stringPreferencesKey("theme_mode")
+        val ACCENT_COLOR = stringPreferencesKey("accent_color")
         val IS_PRO = booleanPreferencesKey("is_pro")
         val ADS_INTRO_SHOWN = booleanPreferencesKey("ads_intro_shown")
         val PRO_PROMPT_SHOWN = booleanPreferencesKey("pro_prompt_shown")
@@ -59,7 +61,9 @@ class SettingsRepository(context: Context) {
                 lastReminderDate = p[Keys.LAST_REMINDER_DATE],
                 leapDayPolicy = p[Keys.LEAP_POLICY].toEnum(LeapDayPolicy.FEB_28),
                 themeMode = p[Keys.THEME].toEnum(ThemeMode.SYSTEM),
-                isPro = p[Keys.IS_PRO] ?: false,
+                accentColor = p[Keys.ACCENT_COLOR].toEnum(AccentColor.BERRY),
+                //isPro = p[Keys.IS_PRO] ?: false,
+                isPro = true,
                 adsIntroShown = p[Keys.ADS_INTRO_SHOWN] ?: false,
                 proPromptShown = p[Keys.PRO_PROMPT_SHOWN] ?: false,
                 notificationPermissionAsked = p[Keys.NOTIFICATION_ASKED] ?: false,
@@ -93,6 +97,10 @@ class SettingsRepository(context: Context) {
 
     suspend fun setThemeMode(mode: ThemeMode) {
         store.edit { it[Keys.THEME] = mode.name }
+    }
+
+    suspend fun setAccentColor(color: AccentColor) {
+        store.edit { it[Keys.ACCENT_COLOR] = color.name }
     }
 
     suspend fun setPro(isPro: Boolean) {

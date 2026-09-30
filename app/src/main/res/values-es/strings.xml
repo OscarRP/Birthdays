@@ -107,6 +107,13 @@
     <string name="settings_theme_light">Claro</string>
     <string name="settings_theme_dark">Oscuro</string>
     <string name="settings_theme_system">Sistema</string>
+    <string name="settings_colors">Colores de la app</string>
+    <string name="settings_colors_pro_hint">Desbloquea con Candelio Pro para cambiar los colores de la app.</string>
+    <string name="accent_berry">Baya</string>
+    <string name="accent_ocean">Océano</string>
+    <string name="accent_forest">Bosque</string>
+    <string name="accent_sunset">Atardecer</string>
+    <string name="accent_lavender">Lavanda</string>
     <string name="settings_data">Datos</string>
     <string name="settings_backup_off">Sin conectar a Google Drive</string>
     <string name="settings_backup_connected">Google Drive conectado</string>

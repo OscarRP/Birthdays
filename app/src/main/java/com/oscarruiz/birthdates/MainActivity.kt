@@ -10,6 +10,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import com.oscarruiz.birthdates.domain.model.AccentColor
 import com.oscarruiz.birthdates.domain.model.AppSettings
 import com.oscarruiz.birthdates.domain.model.ThemeMode
 import com.oscarruiz.birthdates.ui.navigation.AppNavHost
@@ -41,7 +42,9 @@ class MainActivity : ComponentActivity() {
             val settings: AppSettings? by container.settingsRepository.settings
                 .collectAsStateWithLifecycle<AppSettings?>(initialValue = null)
             val current = settings
-            CandelioTheme(themeMode = current?.themeMode ?: ThemeMode.SYSTEM) {
+            // Si se pierde Pro (reembolso), no se sigue aplicando un color que ya no corresponde.
+            val accent = if (current?.isPro == true) current.accentColor else AccentColor.BERRY
+            CandelioTheme(themeMode = current?.themeMode ?: ThemeMode.SYSTEM, accentColor = accent) {
                 if (current == null) {
                     Surface(Modifier.fillMaxSize()) {}
                 } else {

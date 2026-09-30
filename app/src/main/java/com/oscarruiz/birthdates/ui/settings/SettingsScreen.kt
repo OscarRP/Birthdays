@@ -59,6 +59,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -69,6 +70,7 @@ import com.oscarruiz.birthdates.AppContainer
 import com.oscarruiz.birthdates.BuildConfig
 import com.oscarruiz.birthdates.R
 import com.oscarruiz.birthdates.data.SettingsRepository
+import com.oscarruiz.birthdates.domain.model.AccentColor
 import com.oscarruiz.birthdates.domain.model.AppSettings
 import com.oscarruiz.birthdates.domain.model.LeapDayPolicy
 import com.oscarruiz.birthdates.domain.model.ReminderOffsets
@@ -76,11 +78,11 @@ import com.oscarruiz.birthdates.domain.model.ThemeMode
 import com.oscarruiz.birthdates.notifications.NotificationHelper
 import com.oscarruiz.birthdates.ui.common.appViewModel
 import com.oscarruiz.birthdates.ui.common.findActivity
+import com.oscarruiz.birthdates.ui.theme.swatch
 import com.oscarruiz.birthdates.util.DateTexts
 import kotlinx.coroutines.launch
 
-/** TODO: publica tu política de privacidad (por ejemplo en GitHub Pages) y pon aquí su URL. */
-const val PRIVACY_POLICY_URL = "https://example.com/birthdays/privacy"
+private const val PRIVACY_POLICY_URL = "https://oscarrp.github.io/Birthdays/site/privacidad.html"
 
 class SettingsViewModel(
     private val settings: SettingsRepository,
@@ -101,6 +103,8 @@ class SettingsViewModel(
     fun setLeapPolicy(policy: LeapDayPolicy) = viewModelScope.launch { settings.setLeapDayPolicy(policy) }
 
     fun setTheme(mode: ThemeMode) = viewModelScope.launch { settings.setThemeMode(mode) }
+
+    fun setAccentColor(color: AccentColor) = viewModelScope.launch { settings.setAccentColor(color) }
 }
 
 @Composable
@@ -124,6 +128,7 @@ fun SettingsRoute(
         onTimeChange = { h, m -> vm.setTime(h, m) },
         onLeapPolicy = { vm.setLeapPolicy(it) },
         onTheme = { vm.setTheme(it) },
+        onAccentColor = { if (settings.isPro) vm.setAccentColor(it) else onPro() },
         onPrivacyOptions = { context.findActivity()?.let(container.consentManager::showPrivacyOptions) },
     )
 }
@@ -141,6 +146,7 @@ fun SettingsScreen(
     onTimeChange: (Int, Int) -> Unit,
     onLeapPolicy: (LeapDayPolicy) -> Unit,
     onTheme: (ThemeMode) -> Unit,
+    onAccentColor: (AccentColor) -> Unit,
     onPrivacyOptions: () -> Unit,
 ) {
     val context = LocalContext.current
@@ -252,6 +258,31 @@ fun SettingsScreen(
                         shape = SegmentedButtonDefaults.itemShape(index = index, count = modes.size),
                     ) { Text(stringResource(label)) }
                 }
+            }
+            Spacer(Modifier.height(16.dp))
+            Text(
+                text = stringResource(R.string.settings_colors),
+                style = MaterialTheme.typography.labelLarge,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(bottom = 8.dp),
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(14.dp)) {
+                AccentColor.entries.forEach { accent ->
+                    AccentSwatch(
+                        accent = accent,
+                        selected = settings.isPro && settings.accentColor == accent,
+                        locked = !settings.isPro,
+                        onClick = { onAccentColor(accent) },
+                    )
+                }
+            }
+            if (!settings.isPro) {
+                Text(
+                    text = stringResource(R.string.settings_colors_pro_hint),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.padding(top = 8.dp),
+                )
             }
 
             // ---- Datos ----
@@ -365,6 +396,45 @@ private fun ProCard(isPro: Boolean, onClick: () -> Unit) {
                 )
             }
             if (!isPro) Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null)
+        }
+    }
+}
+
+@Composable
+private fun accentName(accent: AccentColor): String = when (accent) {
+    AccentColor.BERRY -> stringResource(R.string.accent_berry)
+    AccentColor.OCEAN -> stringResource(R.string.accent_ocean)
+    AccentColor.FOREST -> stringResource(R.string.accent_forest)
+    AccentColor.SUNSET -> stringResource(R.string.accent_sunset)
+    AccentColor.LAVENDER -> stringResource(R.string.accent_lavender)
+}
+
+@Composable
+private fun AccentSwatch(accent: AccentColor, selected: Boolean, locked: Boolean, onClick: () -> Unit) {
+    val color = accent.swatch(dark = androidx.compose.foundation.isSystemInDarkTheme())
+    val description = accentName(accent)
+    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        Surface(
+            onClick = onClick,
+            shape = CircleShape,
+            color = color,
+            modifier = Modifier.size(44.dp),
+        ) {
+            if (selected) {
+                Icon(
+                    Icons.Default.Check,
+                    contentDescription = description,
+                    tint = Color.White,
+                    modifier = Modifier.padding(11.dp),
+                )
+            } else if (locked) {
+                Icon(
+                    Icons.Default.Lock,
+                    contentDescription = description,
+                    tint = Color.White.copy(alpha = 0.9f),
+                    modifier = Modifier.padding(12.dp),
+                )
+            }
         }
     }
 }

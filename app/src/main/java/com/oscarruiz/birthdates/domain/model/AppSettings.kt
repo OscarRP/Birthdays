@@ -5,6 +5,9 @@ enum class LeapDayPolicy { FEB_28, MAR_1 }
 
 enum class ThemeMode { SYSTEM, LIGHT, DARK }
 
+/** Paletas de color de la app. BERRY es la de siempre; el resto son función Pro. */
+enum class AccentColor { BERRY, OCEAN, FOREST, SUNSET, LAVENDER }
+
 object ReminderOffsets {
     /** Días de antelación que se pueden elegir en Ajustes. */
     val ALL = listOf(0, 1, 3, 7)
@@ -20,6 +23,7 @@ data class AppSettings(
     // Fechas y apariencia
     val leapDayPolicy: LeapDayPolicy = LeapDayPolicy.FEB_28,
     val themeMode: ThemeMode = ThemeMode.SYSTEM,
+    val accentColor: AccentColor = AccentColor.BERRY,
     // Monetización
     val isPro: Boolean = false,
     val adsIntroShown: Boolean = false,
